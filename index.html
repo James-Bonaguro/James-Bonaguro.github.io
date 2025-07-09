@@ -3,13 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Bonaguro - Portfolio</title>
+    <title>James Bonaguro - Solutions Consultant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* We can add custom CSS here if we need it */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend:wght@400;700&display=swap');
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-lexend { font-family: 'Lexend', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-gray-900 text-gray-300">
 
-    </body>
+    <header class="bg-gray-800 sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-white font-lexend">James Bonaguro</a>
+            <div class="space-x-6">
+                <a href="#about" class="hover:text-cyan-400">About</a>
+                <a href="#case-studies" class="hover:text-cyan-400">Case Studies</a>
+                <a href="#contact" class="hover:text-cyan-400">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-10">
+
+        <section class="text-center my-16">
+            <h1 class="text-5xl font-bold text-white mb-3 font-lexend">Solutions Consultant & GTM Strategist</h1>
+            <p class="text-xl text-cyan-400">Driving Revenue Growth Through Strategic Technology Implementations</p>
+        </section>
+
+        <section id="about" class="my-20">
+            <h2 class="text-3xl font-bold text-white mb-6 font-lexend">About Me</h2>
+            <p class="text-lg leading-relaxed">
+                I am a results-oriented Solutions Consultant with a track record of architecting and implementing technology solutions that solve critical business problems. My expertise lies in understanding client needs, crafting compelling go-to-market (GTM) strategies, and leveraging technology to create efficient, scalable systems that directly impact revenue and market position.
+            </p>
+        </section>
+
+        <section id="case-studies" class="my-20">
+            <h2 class="text-3xl font-bold text-white mb-8 font-lexend">Case Studies</h2>
+            <div class="space-y-12">
+
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4 font-lexend">Automated GTM Strategy Workflow</h3>
+                    <p class="mb-4"><strong>The Challenge:</strong> A rapidly growing tech firm was struggling with a manual, inefficient, and error-prone process for developing go-to-market strategies for new products, leading to significant delays and misaligned launches.</p>
+                    <p class="mb-4"><strong>My Solution:</strong> I designed and built an internal web application that automated the entire GTM workflow. The tool guides product managers through a step-by-step process, from market analysis to launch planning, using a series of structured inputs and generating a cohesive strategy document. This eliminated redundant data entry, enforced a consistent strategic framework, and provided leadership with a real-time dashboard of all upcoming launches.</p>
+                    <p><strong>The Impact:</strong> The solution reduced the GTM planning cycle by 40%, decreased strategy errors by 95%, and provided a scalable platform that now supports the company's entire product portfolio.</p>
+                </div>
+
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4 font-lexend">Sales Enablement Content Hub</h3>
+                    <p class="mb-4"><strong>The Challenge:</strong> The global sales team lacked a centralized, easy-to-access repository for critical sales collateral, such as case studies, data sheets, and competitive battle cards. This resulted in wasted time, inconsistent messaging, and lost sales opportunities.</p>
+                    <p class="mb-4"><strong>My Solution:</strong> I developed a dynamic, searchable content hub that served as the single source of truth for the entire sales organization. The system categorized all assets by product, industry, and sales stage, and included a robust search function. I integrated it with their existing CRM to provide contextual content recommendations directly within the sales workflow.</p>
+                    <p><strong>The Impact:</strong> Increased the sales team's efficiency by an estimated 15%, improved message consistency across all regions, and was credited with helping to close several key deals by providing the right information at the right time.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="contact" class="my-20 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6 font-lexend">Contact</h2>
+            <p class="text-lg mb-6">I am always open to discussing new challenges and opportunities.</p>
+            <a href="mailto:james.bonaguro@example.com" class="bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-cyan-600 transition-colors duration-300">
+                Get in Touch
+            </a>
+        </section>
+
+    </main>
+
+</body>
 </html>
