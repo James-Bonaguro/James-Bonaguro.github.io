@@ -25,6 +25,8 @@
         }
         
         .slide {
+            /* Hides all slides by default */
+            display: none; 
             background: white;
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
@@ -32,6 +34,11 @@
             overflow: hidden;
             position: relative;
             border: 1px solid #e1e5e9;
+        }
+
+        /* This class will be added by JavaScript to show the current slide */
+        .slide.active {
+            display: block;
         }
         
         .slide-header {
@@ -360,6 +367,38 @@
             border-radius: 6px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin: 5px;
+        }
+        
+        /* NEW STYLES FOR SLIDESHOW BUTTONS */
+        .slide-navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px 0; /* Add padding to top of nav */
+            border-top: 1px solid #e9ecef;
+            margin-top: 40px;
+        }
+
+        .nav-button {
+            background: #0070d2;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #005fb2;
+            transform: translateY(-2px);
+        }
+
+        .nav-button:disabled {
+            background-color: #ced4da;
+            cursor: not-allowed;
+            transform: none;
         }
         
         @media (max-width: 768px) {
@@ -759,7 +798,90 @@
                 </div>
             </div>
         </div>
-
+        
     </div>
+
+    <!-- ADDED JAVASCRIPT FOR SLIDESHOW -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            // Function to create and add navigation buttons to each slide
+            const createNavButtons = () => {
+                slides.forEach((slide, index) => {
+                    const navContainer = document.createElement('div');
+                    navContainer.className = 'slide-navigation';
+
+                    const prevButton = document.createElement('button');
+                    prevButton.className = 'nav-button prev-btn';
+                    prevButton.textContent = 'Previous';
+                    prevButton.onclick = () => changeSlide(-1);
+
+                    const nextButton = document.createElement('button');
+                    nextButton.className = 'nav-button next-btn';
+                    nextButton.textContent = 'Next';
+                    nextButton.onclick = () => changeSlide(1);
+                    
+                    // The "Bonus" slide is just for context and not part of the main demo flow.
+                    // We will skip adding buttons to it.
+                    if (slide.querySelector('.slide-number')?.textContent.toLowerCase() !== 'bonus') {
+                        navContainer.appendChild(prevButton);
+                        navContainer.appendChild(nextButton);
+                        slide.appendChild(navContainer);
+                    }
+                });
+            };
+
+            const showSlide = (index) => {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+
+                // Show the target slide
+                if (slides[index]) {
+                    slides[index].classList.add('active');
+                }
+
+                // Update button states
+                const activeSlide = slides[index];
+                if (activeSlide) {
+                    const prevBtn = activeSlide.querySelector('.prev-btn');
+                    const nextBtn = activeSlide.querySelector('.next-btn');
+
+                    if (prevBtn) {
+                        prevBtn.disabled = index === 0;
+                    }
+                    if (nextBtn) {
+                        // The last "real" slide is the one before the bonus slide.
+                        const lastSlideIndex = Array.from(slides).findIndex(s => s.querySelector('.slide-number')?.textContent.toLowerCase() === 'bonus') - 1;
+                        const finalIndex = lastSlideIndex >= 0 ? lastSlideIndex : slides.length - 1;
+                        nextBtn.disabled = index === finalIndex;
+                    }
+                }
+                 // Scroll to the top of the new slide for better visibility
+                window.scrollTo(0, 0);
+            };
+
+            const changeSlide = (direction) => {
+                const newSlideIndex = currentSlide + direction;
+                if (newSlideIndex >= 0 && newSlideIndex < slides.length) {
+                    // Skip the bonus slide if moving forward to it
+                    const nextSlideNumber = slides[newSlideIndex].querySelector('.slide-number')?.textContent.toLowerCase();
+                    if (direction > 0 && nextSlideNumber === 'bonus') {
+                        // Do nothing if the next slide is the bonus slide
+                        return;
+                    }
+                    currentSlide = newSlideIndex;
+                    showSlide(currentSlide);
+                }
+            };
+
+            // Initial setup
+            createNavButtons();
+            showSlide(currentSlide);
+        });
+    </script>
 </body>
-</ht
+</html>
