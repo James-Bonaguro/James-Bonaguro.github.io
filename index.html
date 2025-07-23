@@ -57,36 +57,23 @@
             transform: translateY(-5px);
             box-shadow: 0 14px 28px rgba(0, 112, 210, 0.25), 0 10px 10px rgba(0, 112, 210, 0.22);
         }
-        .engineered-section {
-            background-color: #f8fafc; /* slate-50 */
-            padding: 4rem 1rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .engineered-box {
-            max-width: 48rem; /* 768px */
-            margin: auto;
-            background-color: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.75rem;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
         .engineered-link {
-            margin-top: 1rem;
             display: inline-block;
-            color: #2563eb; /* blue-600 */
+            color: #60a5fa; /* blue-400 */
             font-weight: 600;
             text-decoration: none;
             transition: color 0.2s;
+            border-bottom: 1px solid transparent;
         }
         .engineered-link:hover {
-            color: #1d4ed8; /* blue-800 */
+            color: #dbeafe; /* blue-200 */
+            border-bottom-color: #60a5fa;
         }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Hero Section -->
     <section id="hero" class="min-h-screen flex items-center justify-center text-center bg-gradient-to-br from-slate-50 to-slate-200 p-4">
         <div class="max-w-5xl mx-auto">
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight">James Bonaguro</h1>
@@ -114,48 +101,60 @@
         </div>
     </section>
 
-    <section class="engineered-section">
-        <div class="engineered-box">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">A Note on this Portfolio's Architecture</h2>
-            <p class="mt-4 text-slate-600">This portfolio was orchestrated, not coded by hand. My solution-oriented approach was to architect a multi-AI workflow that translated a visual concept into this final product. This process demonstrates engineering solutions by identifying and leveraging the strengths of multiple models. The replicable template and overall strategy used for this workflow is available to explore below.</p>
-            <a href="#case-studies-nav" data-target="multi-ai-workflow" class="engineered-link case-study-btn">Explore the AI Workflow Template →</a>
-        </div>
-    </section>
-
-    <section id="what-i-bring" class="py-20 lg:py-24 bg-white">
+    <!-- Core Competencies in Action Section -->
+    <section id="competencies" class="py-20 lg:py-24 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                 <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Core Expertise</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Core Competencies in Action</h2>
+                <p class="mt-4 text-lg text-slate-500 max-w-3xl mx-auto">I apply a solution-oriented mindset to solve complex business challenges. Here’s how:</p>
             </div>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                <div class="flex items-start gap-4">
-                    <span class="text-green-500 text-2xl mt-1">✓</span>
-                    <p class="text-lg text-slate-700">Sales Engineering & Technical Solution Design</p>
+            
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Column 1: Technical Solution Architecture -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Technical Solution Architecture</h3>
+                    <p class="text-slate-600 mb-6 text-sm">I specialize in designing and implementing robust, scalable solutions by integrating disparate platforms and automating complex workflows.</p>
+                    <ul class="space-y-3 text-left text-sm">
+                        <li class="impact-list-item"><strong>Operational Intelligence Dashboard:</strong> Architected an API data pipeline from Asana to Power BI.</li>
+                        <li class="impact-list-item"><strong>Cross-Functional Workflow Integration:</strong> Designed a unified workflow to bridge development and business operations.</li>
+                        <li class="impact-list-item"><strong>Reusable Solution Architecture:</strong> Created modular templates that accelerated deployment by 50%.</li>
+                    </ul>
                 </div>
-                <div class="flex items-start gap-4">
-                    <span class="text-green-500 text-2xl mt-1">✓</span>
-                    <p class="text-lg text-slate-700">Customer Discovery & Requirements Mapping</p>
+
+                <!-- Column 2: Customer-Centric Engagement -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Customer-Centric Engagement</h3>
+                    <p class="text-slate-600 mb-6 text-sm">I begin every project by deeply understanding customer challenges, then build intuitive solutions and methodologies that drive adoption.</p>
+                    <ul class="space-y-3 text-left text-sm">
+                        <li class="impact-list-item"><strong>Customer Intelligence Automation:</strong> Built a VoC system to capture feedback and automate responses.</li>
+                        <li class="impact-list-item"><strong>Implementation Methodology:</strong> Authored the standardized GTM playbook for an enterprise-wide Asana rollout, creating a unified process that directly accelerated go-to-market velocity.</li>
+                        <li class="impact-list-item"><strong>CRM Workflow Optimization:</strong> Drove a 38% revenue increase and cut deal funding time by 3 days by implementing a new digital F&I workflow with Darwin & DealerTrack.</li>
+                    </ul>
                 </div>
-                <div class="flex items-start gap-4">
-                    <span class="text-green-500 text-2xl mt-1">✓</span>
-                    <p class="text-lg text-slate-700">Demo Architecture & Technical Presentations</p>
+
+                <!-- Column 3: Driving Business Impact -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Driving Business Impact</h3>
+                    <p class="text-slate-600 mb-6 text-sm">My primary goal is to translate technical solutions into measurable business outcomes, from increasing revenue to improving team productivity.</p>
+                    <ul class="space-y-3 text-left text-sm">
+                        <li class="impact-list-item"><strong>Eliminated 2+ Hour Weekly Meetings</strong> by delivering real-time analytics.</li>
+                        <li class="impact-list-item"><strong>Reduced Manual Data Entry by 60%</strong> through CRM automation.</li>
+                        <li class="impact-list-item"><strong>Improved Project Delivery Timelines by 50%</strong> with new workflow integrations.</li>
+                    </ul>
                 </div>
-                <div class="flex items-start gap-4">
-                    <span class="text-green-500 text-2xl mt-1">✓</span>
-                    <p class="text-lg text-slate-700">Solution Integration & Platform Expertise</p>
-                </div>
-                <div class="flex items-start gap-4">
-                    <span class="text-green-500 text-2xl mt-1">✓</span>
-                    <p class="text-lg text-slate-700">Stakeholder Influence & Change Leadership</p>
-                </div>
-                <div class="flex items-start gap-4">
-                    <span class="text-green-500 text-2xl mt-1">✓</span>
-                    <p class="text-lg text-slate-700">Executive Communication & Relationship Building</p>
-                </div>
+            </div>
+
+            <!-- Meta Proof Point (Capstone) -->
+            <div class="max-w-4xl mx-auto mt-16 p-8 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 text-center shadow-2xl">
+                <div class="text-4xl mb-4">🧠</div>
+                <h3 class="text-2xl font-bold text-white mb-4">My Approach in Action: This Portfolio</h3>
+                <p class="text-slate-300 max-w-2xl mx-auto mb-6">This portfolio demonstrates my solution-oriented approach. I didn't code it by hand—I engineered a multi-AI workflow and drafted the content with voice-to-text to prove that modern tools can deliver high-quality results, fast.</p>
+                <a href="#case-studies-nav" data-target="multi-ai-workflow" class="engineered-link case-study-btn">Explore the AI Workflow Template →</a>
             </div>
         </div>
     </section>
 
+    <!-- SE Demo Link Section -->
     <section class="se-demo-link-section">
         <div class="container mx-auto">
             <a href="se-demo.html" target="_blank" class="se-demo-button">
@@ -165,69 +164,11 @@
         </div>
     </section>
 
-    <section id="integration-portfolio" class="py-20 lg:py-24 bg-slate-50">
+    <!-- Customer Success Portfolio Navigation Section -->
+    <section id="case-studies-nav" class="py-20 lg:py-24 bg-slate-50 border-t border-slate-200">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Customer Solution Implementations</h2>
-                <p class="mt-4 text-lg text-slate-500 max-w-3xl mx-auto">Enterprise customer implementations showcasing technical solution design and cross-platform integration expertise across multiple business-critical systems.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                <div class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
-                    <div class="text-4xl mb-3">📊</div>
-                    <h3 class="font-bold text-lg text-slate-800 mb-3">Executive Analytics Solution</h3>
-                    <p class="text-sm text-slate-600 mb-4">Delivered comprehensive executive dashboard solution for 150+ stakeholder organization, transforming project visibility from manual status meetings to real-time analytics.</p>
-                    <div class="text-xs text-slate-500">
-                        <div class="font-semibold text-green-600">Eliminated 2+ hour weekly meetings, reduced to 30-minute data-driven reviews</div>
-                    </div>
-                </div>
-                <div class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
-                    <div class="text-4xl mb-3">🔗</div>
-                    <h3 class="font-bold text-lg text-slate-800 mb-3">Customer Intelligence Automation</h3>
-                    <p class="text-sm text-slate-600 mb-4">Architected automated customer feedback system connecting survey data to CRM workflows, enabling instant escalation for critical feedback and executive visibility.</p>
-                    <div class="text-xs text-slate-500">
-                        <div class="font-semibold text-green-600">90% reduction in manual customer intelligence processes</div>
-                    </div>
-                </div>
-                <div class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
-                    <div class="text-4xl mb-3">🔄</div>
-                    <h3 class="font-bold text-lg text-slate-800 mb-3">Cross-Functional Workflow Integration</h3>
-                    <p class="text-sm text-slate-600 mb-4">Designed unified workflow solution bridging development and business operations, creating seamless coordination between technical and commercial teams.</p>
-                    <div class="text-xs text-slate-500">
-                        <div class="font-semibold text-green-600">50% improvement in cross-functional project delivery timelines</div>
-                    </div>
-                </div>
-                <div class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
-                    <div class="text-4xl mb-3">⚡</div>
-                    <h3 class="font-bold text-lg text-slate-800 mb-3">CRM Workflow Optimization</h3>
-                    <p class="text-sm text-slate-600 mb-4">Implemented comprehensive CRM automation solution integrating Salesforce with Microsoft ecosystem, streamlining sales operations and data management.</p>
-                    <div class="text-xs text-slate-500">
-                        <div class="font-semibold text-green-600">60% reduction in manual data entry, improved sales team productivity</div>
-                    </div>
-                </div>
-                <div class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
-                    <div class="text-4xl mb-3">📋</div>
-                    <h3 class="font-bold text-lg text-slate-800 mb-3">Implementation Methodology</h3>
-                    <p class="text-sm text-slate-600 mb-4">Developed comprehensive implementation framework enabling customer teams to deploy solutions independently with minimal technical overhead.</p>
-                    <div class="text-xs text-slate-500">
-                        <div class="font-semibold text-green-600">75% faster onboarding for new customer implementations</div>
-                    </div>
-                </div>
-                <div class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
-                    <div class="text-4xl mb-3">🎯</div>
-                    <h3 class="font-bold text-lg text-slate-800 mb-3">Reusable Solution Architecture</h3>
-                    <p class="text-sm text-slate-600 mb-4">Created modular solution templates enabling rapid deployment across multiple customer environments and business units.</p>
-                    <div class="text-xs text-slate-500">
-                        <div class="font-semibold text-green-600">50% acceleration in subsequent customer implementations</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="case-studies-nav" class="py-20 lg:py-24 bg-white border-t border-slate-200">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Customer Success Portfolio</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">In-Depth Case Studies</h2>
                 <p class="mt-4 text-lg text-slate-500 max-w-3xl mx-auto">Explore detailed customer implementations showcasing discovery methodology, solution architecture, and measurable business outcomes across diverse enterprise environments.</p>
             </div>
             <div id="case-study-buttons" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
@@ -256,6 +197,7 @@
     </section>
 
     <div id="case-study-content-area" class="bg-slate-50">
+        <!-- Asana Case Study Section -->
         <section id="asana" class="case-study-section py-20 lg:py-24">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
@@ -327,8 +269,9 @@
             </div>
         </section>
 
+        <!-- Voice of Customer Case Study Section -->
         <section id="voc" class="case-study-section py-20 lg:py-24">
-            <div class="container mx-auto px-4 max-w-5xl">
+             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
                     <div class="p-8 md:p-12 text-center text-white bg-gradient-to-br from-blue-500 to-indigo-700">
                         <h2 class="text-3xl md:text-4xl font-extrabold">Voice of Customer Program Transformation</h2>
@@ -389,6 +332,7 @@
             </div>
         </section>
 
+        <!-- Mercedes Case Study Section -->
         <section id="mercedes" class="case-study-section py-20 lg:py-24">
              <div class="container mx-auto px-4 max-w-5xl">
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
@@ -456,6 +400,7 @@
             </div>
         </section>
 
+        <!-- GTM Intelligence Case Study Section -->
         <section id="gtm-intelligence" class="case-study-section py-20 lg:py-24">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
@@ -532,6 +477,7 @@
             </div>
         </section>
 
+        <!-- Multi-AI Workflow Case Study Section -->
         <section id="multi-ai-workflow" class="case-study-section py-20 lg:py-24">
              <div class="container mx-auto px-4 max-w-5xl">
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
