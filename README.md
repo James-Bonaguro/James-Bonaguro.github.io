@@ -1,4 +1,5 @@
-# James Bonaguro ---- Solutions Engineer & Enterprise Software Implementation and Integration Specialist
+# James Bonaguro
+Solutions Engineer & Enterprise Software Implementation and Integration Specialist
 
 Welcome to my professional portfolio.
 
