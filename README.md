@@ -1,4 +1,4 @@
-# James Bonaguro — Technical GTM Strategist & Solutions Engineer
+# James Bonaguro — Solutions Engineer & Technical Consultant
 
 Welcome to my professional portfolio.
 
