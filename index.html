@@ -1,224 +1,657 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>James Bonaguro | Solutions Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Bonaguro - Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #334155; /* slate-700 */
+        }
+        .impact-list-item {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+        .impact-list-item::before {
+            content: "✓";
+            color: #16a34a; /* green-600 */
+            font-weight: bold;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            flex-shrink: 0;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        /* Updated for direct linking */
+        .case-study-section {
+            padding-top: 4rem; 
+        }
+        html {
+            scroll-padding-top: 4rem; /* Adjust this value based on your sticky header's height */
+        }
+        .se-demo-link-section {
+            background-color: white;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        .se-demo-button {
+            display: inline-block;
+            background-color: #0070D2;
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 112, 210, 0.2), 0 6px 6px rgba(0, 112, 210, 0.23);
+        }
+        .se-demo-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 28px rgba(0, 112, 210, 0.25), 0 10px 10px rgba(0, 112, 210, 0.22);
+        }
+        .engineered-link {
+            display: inline-block;
+            color: #60a5fa; /* blue-400 */
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .engineered-link:hover {
+            color: #dbeafe; /* blue-200 */
+            border-bottom-color: #60a5fa;
+        }
+        .competency-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .competency-link strong {
+            transition: color 0.2s ease-in-out;
+        }
+        .competency-link:hover strong {
+            color: #2563eb; /* blue-600 */
+        }
+    </style>
 </head>
-<body class="bg-white text-slate-800">
+<body class="antialiased">
 
-<!-- ===== HERO ===== -->
-<header id="top" class="py-20 text-center border-b border-slate-200">
-  <h1 class="text-4xl font-extrabold mb-2">James Bonaguro</h1>
-  <p class="text-sm italic text-slate-500 mb-6">
-    This portfolio is always evolving — latest update <strong>August 2025</strong>.
-  </p>
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center text-center bg-gradient-to-br from-slate-50 to-slate-200 p-4">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight">James Bonaguro</h1>
+            <div class="mt-8 text-base text-slate-500">
+                <span>📍 Chicago, IL</span>
+                <span class="mx-2">|</span>
+                <span>📧 james.bonaguro@gmail.com</span>
+                <span class="mx-2">|</span>
+                <span>📱 708-420-5462</span>
+            </div>
+            
+            <div class="mt-8">
+                <span class="inline-block bg-slate-200 text-slate-700 text-xs italic px-3 py-1 rounded-full">Always evolving — latest update July 2025.</span>
+            </div>
 
-  <h2 class="text-xl font-semibold max-w-3xl mx-auto">
-    Solutions Engineer with a founder’s mindset who turns disconnected tools into automated workflows.<br/>
-    Proven results: doubled NPS/CSAT response rates, 25 % faster GTM cycles, 35 % fewer manual hours.
-  </h2>
+            <p class="mt-8 max-w-2xl mx-auto text-slate-600">Solutions engineer delivering enterprise integrations and stakeholder alignment through rapid technical implementation. Below is a showcase of my work, from in-depth case studies to an interactive solution demo.</p>
+            <div class="mt-10 flex justify-center items-center gap-4">
+                <a href="https://linkedin.com/in/jamesbonaguro" target="_blank" class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Visit my LinkedIn Profile
+                </a>
+                <a href="#case-studies-nav" class="bg-white text-slate-700 font-semibold px-8 py-3 rounded-lg hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl border border-slate-200">
+                    View Case Studies
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <div class="mt-8 flex justify-center gap-3 flex-wrap">
-    <a href="mailto:james.bonaguro@gmail.com"
-       class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-lg">
-      Email Me
-    </a>
-    <a href="tel:+17084205462"
-       class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-lg">
-      Call / Text Me
-    </a>
-  </div>
-</header>
+    <!-- Core Competencies in Action Section -->
+    <section id="competencies" class="py-20 lg:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Core Competencies in Action</h2>
+                <p class="mt-4 text-lg text-slate-500 max-w-3xl mx-auto">I apply a solution-oriented mindset to solve complex business challenges. Here’s how:</p>
+                <p class="mt-4 text-sm text-blue-600 italic">(Bolded project titles are clickable links to the case studies below.)</p>
+            </div>
+            
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Column 1: Technical Solution Architecture -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Technical Solution Architecture</h3>
+                    <p class="text-slate-600 mb-6 text-sm">I specialize in designing and implementing robust, scalable solutions by integrating disparate platforms and automating complex workflows.</p>
+                    <ul class="space-y-3 text-left text-sm">
+                        <li class="impact-list-item"><a href="#gtm-intelligence" class="competency-link"><strong>Operational Intelligence Dashboard:</strong> Architected an API data pipeline from Asana to Power BI.</a></li>
+                        <li class="impact-list-item"><a href="#asana" class="competency-link"><strong>Cross-Functional Workflow Integration:</strong> Designed a unified workflow to bridge development and business operations.</a></li>
+                        <li class="impact-list-item"><strong>Reusable Solution Architecture:</strong> Created modular templates that accelerated deployment by 50%.</li>
+                    </ul>
+                </div>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="py-20 bg-slate-50 border-b border-slate-200">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-3xl font-extrabold mb-6">About Me</h2>
-    <p class="text-lg text-slate-600">
-      After <strong>starting my career in executive-compensation consulting—advising C-suite leaders on data-driven pay strategy—I played a key role in guiding our
-      family-owned luxury Mercedes-Benz dealership group</strong> from two to four rooftops and through a successful exit.
-      I then pivoted into enterprise technology, orchestrating complex integrations (Salesforce, Asana, Power BI,
-      Zapier) and delivering high-impact projects across sales enablement, customer intelligence, and workflow
-      automation. Most recently I launched a consulting practice that applies these automation principles to small
-      businesses while supporting my family and investing in our ventures. I’m now ready to bring this diverse,
-      hands-on experience back into a high-growth pre-sales role.
-    </p>
-  </div>
-</section>
+                <!-- Column 2: Customer-Centric Engagement -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Customer-Centric Engagement</h3>
+                    <p class="text-slate-600 mb-6 text-sm">I begin every project by deeply understanding customer challenges, then build intuitive solutions and methodologies that drive adoption.</p>
+                    <ul class="space-y-3 text-left text-sm">
+                        <li class="impact-list-item"><a href="#voc" class="competency-link"><strong>Customer Intelligence Automation:</strong> Architected VoC program doubling NPS and CSAT response rates (6%→13%).</a></li>
+                        <li class="impact-list-item"><a href="#asana" class="competency-link"><strong>Implementation Methodology:</strong> Co-led enterprise-wide Asana rollout, enhancing GTM velocity 25%.</a></li>
+                        <li class="impact-list-item"><a href="#mercedes" class="competency-link"><strong>CRM Workflow Optimization:</strong> Drove a 38% revenue increase and cut deal funding time by 3 days by implementing a new digital F&I workflow with Darwin & DealerTrack.</a></li>
+                    </ul>
+                </div>
 
-<!-- ===== CORE COMPETENCIES (compact) ===== -->
-<section id="competencies" class="py-16 bg-white border-b border-slate-200">
-  <div class="max-w-5xl mx-auto px-4 grid gap-8 md:grid-cols-3 text-center">
-    <div>
-      <h3 class="font-bold text-lg mb-2">Platforms & Tools</h3>
-      <p class="text-sm text-slate-600">
-        Salesforce · Asana · Qualtrics · Aha! · Jira · Power BI · CDK · Square · Weave · Zapier
-      </p>
+                <!-- Column 3: Driving Business Impact -->
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Driving Business Impact</h3>
+                    <p class="text-slate-600 mb-6 text-sm">My primary goal is to translate technical solutions into measurable business outcomes, from increasing revenue to improving team productivity.</p>
+                    <ul class="space-y-3 text-left text-sm">
+                        <li class="impact-list-item"><a href="#gtm-intelligence" class="competency-link"><strong>Reduced 2+ Hour Weekly Meetings</strong> by delivering real-time analytics.</a></li>
+                        <li class="impact-list-item"><a href="#voc" class="competency-link"><strong>Reduced manual process time 90%</strong> through CRM automation.</a></li>
+                        <li class="impact-list-item"><a href="#asana" class="competency-link"><strong>Improved project delivery timelines by 25%</strong> with new workflow integrations.</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Meta Proof Point (Capstone) -->
+            <div class="max-w-4xl mx-auto mt-16 p-8 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 text-center shadow-2xl">
+                <div class="text-4xl mb-4">🧠</div>
+                <h3 class="text-2xl font-bold text-white mb-4">My Approach in Action: This Portfolio</h3>
+                <p class="text-slate-300 max-w-2xl mx-auto mb-6">This portfolio demonstrates my solution-oriented approach. I didn't code it by hand—I engineered a multi-AI workflow and drafted the content with voice-to-text to prove that modern tools can deliver high-quality results, fast.</p>
+                <a href="#multi-ai-workflow" class="engineered-link">Explore the AI Workflow Template →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SE Demo Link Section -->
+    <section class="se-demo-link-section">
+        <div class="container mx-auto">
+            <a href="se-demo.html" target="_blank" class="se-demo-button">
+                Launch Interactive Demo
+            </a>
+            <p class="mt-6 text-lg text-slate-600">
+                Explore the end-to-end solutions engineering methodology I use to map customer challenges to business value.
+            </p>
+        </div>
+    </section>
+
+    <!-- Customer Success Portfolio Navigation Section -->
+    <section id="case-studies-nav" class="py-20 lg:py-24 bg-slate-50 border-t border-slate-200">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">In-Depth Case Studies</h2>
+                <p class="mt-4 text-lg text-slate-500 max-w-3xl mx-auto">Explore detailed customer implementations showcasing discovery methodology, solution architecture, and measurable business outcomes across diverse enterprise environments.</p>
+            </div>
+            <div id="case-study-buttons" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+                <a href="#asana" class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
+                    <div class="text-4xl mb-3">📘</div>
+                    <h3 class="font-bold text-lg text-slate-800">Go-to-Market Transformation</h3>
+                </a>
+                <a href="#voc" class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
+                    <div class="text-4xl mb-3">📊</div>
+                    <h3 class="font-bold text-lg text-slate-800">Customer Intelligence System</h3>
+                </a>
+                <a href="#mercedes" class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
+                    <div class="text-4xl mb-3">🚗</div>
+                    <h3 class="font-bold text-lg text-slate-800">Strategic Business Expansion</h3>
+                </a>
+                <a href="#gtm-intelligence" class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
+                    <div class="text-4xl mb-3">💡</div>
+                    <h3 class="font-bold text-lg text-slate-800">Operational Intelligence Dashboard</h3>
+                </a>
+                <a href="#multi-ai-workflow" class="p-6 text-center bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out border border-gray-200">
+                    <div class="text-4xl mb-3">🧠</div>
+                    <h3 class="font-bold text-lg text-slate-800">AI Workflow Orchestration</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="case-study-content-area" class="bg-white">
+        <!-- Asana Case Study Section -->
+        <section id="asana" class="case-study-section py-20 lg:py-24">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+                    <div class="p-8 md:p-12 text-center text-white bg-gradient-to-br from-green-500 to-emerald-700">
+                        <h2 class="text-3xl md:text-4xl font-extrabold">Asana Enterprise Implementation</h2>
+                        <p class="mt-2 text-lg opacity-90">Transforming Go-to-Market Operations at CCC Intelligent Solutions</p>
+                    </div>
+                    <div class="p-8 md:p-12">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <div class="text-3xl font-bold text-green-700">150+</div>
+                                <div class="text-sm font-semibold text-green-800 uppercase tracking-wider mt-1">Users Onboarded</div>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <div class="text-3xl font-bold text-green-700">25%</div>
+                                <div class="text-sm font-semibold text-green-800 uppercase tracking-wider mt-1">GTM Velocity Increase</div>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <div class="text-3xl font-bold text-green-700">90%+</div>
+                                <div class="text-sm font-semibold text-green-800 uppercase tracking-wider mt-1">User Adoption</div>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <div class="text-3xl font-bold text-green-700">8 hrs/wk</div>
+                                <div class="text-sm font-semibold text-green-800 uppercase tracking-wider mt-1">Exec Time Saved</div>
+                            </div>
+                        </div>
+                        <div class="space-y-10">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-amber-400 pl-4 mb-4">The Challenge</h3>
+                                <p class="text-slate-600">CCC Intelligent Solutions needed to unify the go-to-market (GTM) process across its six distinct product portfolios. With over 150 users involved in a GTM process that touches nearly every arm of the company, the organization struggled with disparate tools and no standardized playbook. This created poor cross-functional visibility and inefficient collaboration, hindering the speed and success of new product and feature releases.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-emerald-500 pl-4 mb-4">Solution Approach</h3>
+                                <p class="text-slate-600">As the Solutions Consultant & Implementation Co-Lead, I conducted comprehensive stakeholder analysis for each of the six product portfolios. The solution was a custom Asana architecture built around <strong>product-specific GTM templates and workflows</strong>, not department-specific ones. This provided each portfolio with a tailored launch process while maintaining overall consistency. I then developed a phased rollout strategy and a change management program with a champion network to ensure successful adoption across the 150+ user base.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-emerald-500 pl-4 mb-4">Implementation Process</h3>
+                                 <ul class="space-y-3 text-slate-700">
+                                      <li class="impact-list-item"><strong class="w-32 flex-shrink-0">Discovery (2 wks):</strong> Stakeholder interviews, current state workflow mapping.</li>
+                                      <li class="impact-list-item"><strong class="w-32 flex-shrink-0">Design (3 wks):</strong> Custom template creation, integration planning, pilot group selection.</li>
+                                      <li class="impact-list-item"><strong class="w-32 flex-shrink-0">Pilot (4 wks):</strong> 20-user pilot across 3 high-visibility projects with feedback loops.</li>
+                                      <li class="impact-list-item"><strong class="w-32 flex-shrink-0">Rollout (8 wks):</strong> Portfolio-by-portfolio rollout supported by a robust user enablement plan, including live training, demos, and open office hours.</li>
+                                 </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-emerald-500 pl-4 mb-4">Driving Adoption & Engagement</h3>
+                                <p class="text-slate-600">Beyond the technical implementation, I developed and managed a continuous user enablement program to ensure high adoption and enthusiasm. Key initiatives included:</p>
+                                <ul class="space-y-3 text-slate-700 mt-4">
+                                    <li class="impact-list-item"><strong>Dedicated Support Channels:</strong> Established an internal Asana support email and a public project board, providing users with direct access to help and real-time updates on new features.</li>
+                                    <li class="impact-list-item"><strong>Creative Engagement:</strong> Collaborated with Learning Services to produce a "hype" video that generated excitement and clearly communicated the value of the new tool.</li>
+                                    <li class="impact-list-item"><strong>Champion Program:</strong> Fostered a community of power users by creating a "User of the Week" award, which recognized and rewarded employees who demonstrated outstanding use of the platform.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-emerald-500 pl-4 mb-4">Business Outcomes</h3>
+                                <ul class="space-y-3 text-slate-700">
+                                    <li class="impact-list-item"><strong>Productivity Improvement:</strong> >25% increase in completion velocity for product launches.</li>
+                                    <li class="impact-list-item"><strong>Operational Efficiency:</strong> Reduced internal email traffic for GTM projects by 65%, saving an average of 45 minutes per user, per day.</li>
+                                    <li class="impact-list-item"><strong>Cross-Functional Adoption:</strong> Achieved over 90% sustained user adoption across all involved functions (Sales, Product, Legal, etc.), creating a truly unified GTM process.</li>
+                                    <li class="impact-list-item"><strong>Executive Impact:</strong> Saved 8 hours per week in status meetings due to real-time, portfolio-level transparency.</li>
+                                </ul>
+                            </div>
+                            <div class="text-center mt-12">
+                                <a href="#case-studies-nav" class="back-to-portfolio-btn bg-slate-200 text-slate-800 font-semibold px-6 py-2 rounded-lg hover:bg-slate-300 transition-all">↑ Back to Case Studies</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voice of Customer Case Study Section -->
+        <section id="voc" class="case-study-section py-20 lg:py-24">
+             <div class="container mx-auto px-4 max-w-5xl">
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+                    <div class="p-8 md:p-12 text-center text-white bg-gradient-to-br from-blue-500 to-indigo-700">
+                        <h2 class="text-3xl md:text-4xl font-extrabold">Voice of Customer Program Transformation</h2>
+                        <p class="mt-2 text-lg opacity-90">Building an Enterprise Customer Intelligence Automation System at CCC</p>
+                    </div>
+                    <div class="p-8 md:p-12">
+                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                              <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                   <div class="text-3xl font-bold text-blue-700">>100%</div>
+                                   <div class="text-sm font-semibold text-blue-800 uppercase tracking-wider mt-1">Response Rate Increase</div>
+                              </div>
+                              <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                   <div class="text-3xl font-bold text-blue-700">Instant</div>
+                                   <div class="text-sm font-semibold text-blue-800 uppercase tracking-wider mt-1">Negative Feedback Alerts</div>
+                              </div>
+                              <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                   <div class="text-3xl font-bold text-blue-700">90%</div>
+                                   <div class="text-sm font-semibold text-blue-800 uppercase tracking-wider mt-1">Reduction in Manual Work</div>
+                              </div>
+                              <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                   <div class="text-3xl font-bold text-blue-700">Unified</div>
+                                   <div class="text-sm font-semibold text-blue-800 uppercase tracking-wider mt-1">NPS & CSAT Reporting</div>
+                              </div>
+                         </div>
+                        <div class="space-y-10">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-amber-400 pl-4 mb-4">The Challenge</h3>
+                                <p class="text-slate-600">The organization was ready to implement its first unified Voice of Customer (VoC) program to support its strategic goal of accelerating the go-to-market process. Previously, decentralized survey efforts created data silos and a need for a single source of truth for NPS. Key opportunities for improvement included increasing the 6% survey response rate and establishing a real-time process for acting on customer feedback.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-4">Solution Approach</h3>
+                                <p class="text-slate-600">As the Project Lead, I championed and orchestrated the creation of the company's first-ever centralized customer intelligence system. I aligned the enthusiastic but siloed teams by providing a unified vision and a concrete plan of action. I then translated business requirements into technical specifications, architecting a seamless solution between Qualtrics and Salesforce and directing the Salesforce development team on the specific automations and layouts required to bring this vision to life.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-4">Implementation & Automation</h3>
+                                 <ul class="space-y-3 text-slate-700">
+                                      <li class="impact-list-item"><strong>Standardized Surveys:</strong> Designed and implemented 16 standardized NPS and CSAT surveys in Qualtrics, ensuring consistent formatting and wording across all customer touchpoints.</li>
+                                      <li class="impact-list-item"><strong>Salesforce Automation:</strong> Directed the development of a **Salesforce Flow** that automatically triggered the correct survey when a **Case** was closed or an **Opportunity** stage was updated, eliminating manual work for customer-facing teams.</li>
+                                      <li class="impact-list-item"><strong>Real-Time Alerts:</strong> Designed a workflow where negative feedback instantly created and assigned a high-priority **Task** on the associated **Account record** and sent a **Chatter notification** to the Account Owner for immediate follow-up.</li>
+                                      <li class="impact-list-item"><strong>Advanced Reporting:</strong> Leveraged Qualtrics's advanced analytics to build 16 real-time dashboards—some standardized, some custom—that were automatically updated as responses came in, providing a live view of the customer experience.</li>
+                                 </ul>
+                            </div>
+                             <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Business Outcomes</h3>
+                                <ul class="space-y-3 text-slate-700">
+                                    <li class="impact-list-item"><strong>Increased Response Rate:</strong> More than doubled survey response rates from 6% to 13% across thousands of distributions by standardizing and automating the process.</li>
+                                    <li class="impact-list-item"><strong>Immediate Customer Recovery:</strong> Transformed the customer recovery process from a multi-week delay to an instant, automated alert system, enabling proactive outreach and churn prevention.</li>
+                                    <li class="impact-list-item"><strong>Operational Efficiency:</strong> Eliminated hours of weekly manual work by automating survey distribution and reporting.</li>
+                                    <li class="impact-list-item"><strong>Data-Driven Decision Making:</strong> Provided the first-ever unified, real-time view of customer satisfaction, allowing leadership to make strategic decisions based on reliable data instead of fragmented anecdotes.</li>
+                                </ul>
+                            </div>
+                            <div class="text-center mt-12">
+                                <a href="#case-studies-nav" class="back-to-portfolio-btn bg-slate-200 text-slate-800 font-semibold px-6 py-2 rounded-lg hover:bg-slate-300 transition-all">↑ Back to Case Studies</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mercedes Case Study Section -->
+        <section id="mercedes" class="case-study-section py-20 lg:py-24">
+             <div class="container mx-auto px-4 max-w-5xl">
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+                    <div class="p-8 md:p-12 text-center text-white bg-gradient-to-br from-gray-700 to-gray-900">
+                        <h2 class="text-3xl md:text-4xl font-extrabold">Next-Generation Leadership at Mercedes-Benz</h2>
+                        <p class="mt-2 text-lg opacity-90">Driving Family Business Operations & Technology Strategy</p>
+                    </div>
+                    <div class="p-8 md:p-12">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                            <div class="text-center p-4 bg-slate-100 rounded-lg">
+                                <div class="text-3xl font-bold text-slate-800">$1900</div>
+                                <div class="text-sm font-semibold text-slate-600 uppercase tracking-wider mt-1">PVR Above Industry</div>
+                            </div>
+                            <div class="text-center p-4 bg-slate-100 rounded-lg">
+                                <div class="text-3xl font-bold text-slate-800">Successful</div>
+                                <div class="text-sm font-semibold text-slate-600 uppercase tracking-wider mt-1">Business Exit</div>
+                            </div>
+                            <div class="text-center p-4 bg-slate-100 rounded-lg">
+                                <div class="text-3xl font-bold text-slate-800">100+</div>
+                                <div class="text-sm font-semibold text-slate-600 uppercase tracking-wider mt-1">Employees Led</div>
+                            </div>
+                            <div class="text-center p-4 bg-slate-100 rounded-lg">
+                                <div class="text-3xl font-bold text-slate-800">~0%</div>
+                                <div class="text-sm font-semibold text-slate-600 uppercase tracking-wider mt-1">Employee Turnover</div>
+                            </div>
+                        </div>
+                        <div class="space-y-10">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-amber-400 pl-4 mb-4">Strategic Business Context</h3>
+                                <p class="text-slate-600">As the next-generation leadership in a multi-million dollar family business, I was an integral part of growing the business from 2 to 4 dealerships, ultimately positioning it for a successful sale to the Fields Auto Group.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-gray-700 pl-4 mb-4">Leadership Without Authority</h3>
+                                <p class="text-slate-600">Recognizing that our dealership was falling behind technologically, I proactively made the business case for significant operational upgrades. In an industry often resistant to change, I championed the investment in and co-led the implementation of modern digital tools, including electronic contracting with DealerTrack and the Darwin F&I digital sales platform. While these changes brought initial growing pains, they were critical to modernizing our operations. The successful implementation cut our deal funding time by three days, drove a 38% increase in finance office revenue, and significantly reduced the time required to finalize customer transactions.</p>
+                            </div>
+                             <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-amber-400 pl-4 mb-4">Business Challenges</h3>
+                                <ul class="space-y-3 text-slate-700">
+                                    <li class="impact-list-item">Using old, outdated sales tools that lowered sales margins.</li>
+                                    <li class="impact-list-item">Inefficient operational processes causing delays for customers and employees.</li>
+                                    <li class="impact-list-item">Still using paper and fax for deal funding, which was very slow.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Technology & Process Improvements</h3>
+                                <ul class="space-y-3 text-slate-700">
+                                    <li class="impact-list-item"><strong>Darwin F&I Software Implementation:</strong> Drove a 38% revenue increase in the finance office.</li>
+                                    <li class="impact-list-item"><strong>$1900 PVR:</strong> Achieved per-vehicle revenue significantly above industry average through technology optimization.</li>
+                                    <li class="impact-list-item"><strong>Electronic Sales Financing:</strong> Reduced deal funding time by 3 days, which was critical for improving our vehicle allocation from Mercedes corporate.</li>
+                                    <li class="impact-list-item"><strong>Sub-1-Hour F&I Processes:</strong> Created massive operational efficiency improvement.</li>
+                                    <li class="impact-list-item"><strong>10-15% Monthly Approval Rate Improvements:</strong> Achieved through lender relationship optimization.</li>
+                                    <li class="impact-list-item"><strong>Microsoft Teams Deployment:</strong> Rolled out across all locations for operational efficiency and morale.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-gray-700 pl-4 mb-4">Talent Development & Growth</h3>
+                                <p class="text-slate-600">I created a career progression pipeline (Porter → Concierge → Salesman) and made a financial guarantee to get a promising 19-year-old promoted against management resistance. He became one of our top salesmen within two years, proving that investing in potential over credentials builds loyalty and drives results.</p>
+                            </div>
+                            <div class="text-center mt-12">
+                                <a href="#case-studies-nav" class="back-to-portfolio-btn bg-slate-200 text-slate-800 font-semibold px-6 py-2 rounded-lg hover:bg-slate-300 transition-all">↑ Back to Case Studies</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GTM Intelligence Case Study Section -->
+        <section id="gtm-intelligence" class="case-study-section py-20 lg:py-24">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+                    <div class="p-8 md:p-12 text-center text-white bg-gradient-to-br from-sky-500 to-blue-700">
+                        <h2 class="text-3xl md:text-4xl font-extrabold">Operational Intelligence Dashboard</h2>
+                        <p class="mt-2 text-lg opacity-90">A case study in transforming project data into strategic insights</p>
+                    </div>
+                    <div class="p-8 md:p-12">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                            <div class="text-center p-4 bg-sky-50 rounded-lg">
+                                <div class="text-3xl font-bold text-sky-700">2+ hrs → 30 min</div>
+                                <div class="text-sm font-semibold text-sky-800 uppercase tracking-wider mt-1">Weekly Meeting Time</div>
+                            </div>
+                            <div class="text-center p-4 bg-sky-50 rounded-lg">
+                                <div class="text-3xl font-bold text-sky-700">Weekly</div>
+                                <div class="text-sm font-semibold text-sky-800 uppercase tracking-wider mt-1">Automated Reports</div>
+                            </div>
+                            <div class="text-center p-4 bg-sky-50 rounded-lg">
+                                <div class="text-3xl font-bold text-sky-700">API</div>
+                                <div class="text-sm font-semibold text-sky-800 uppercase tracking-wider mt-1">Asana to Power BI</div>
+                            </div>
+                             <div class="text-center p-4 bg-sky-50 rounded-lg">
+                                <div class="text-3xl font-bold text-sky-700">Real-Time</div>
+                                <div class="text-sm font-semibold text-sky-800 uppercase tracking-wider mt-1">Portfolio Visibility</div>
+                            </div>
+                        </div>
+                        <div class="space-y-10">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-amber-400 pl-4 mb-4">The Business Challenge</h3>
+                                <div class="space-y-4 text-slate-600">
+                                   <p><strong>Executive Blind Spots:</strong> Leadership had no real-time visibility into 40+ concurrent GTM projects. Status updates required lengthy meetings and manual data compilation, and project risks were only detected after they became critical.</p>
+                                   <p><strong>Disconnected Data:</strong> Project information lived in Asana, but there was no way for stakeholders to get a quick, multi-layered overview of all 40+ concurrent GTM projects. Assessing portfolio health required slow, manual data compilation.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-sky-500 pl-4 mb-4">My Solution & Architecture</h3>
+                                <div class="space-y-4 text-slate-600">
+                                    <p>As the Integration Lead and Business Analyst, I architected an automated API data pipeline to feed our project data from Asana directly into Power BI. I partnered with our Data Analytics team to design the specific requirements for a multi-layered dashboard that would provide at-a-glance insights into portfolio health. My role was to architect the integration and build the weekly automated reports that became the single source of truth for the entire GTM organization.</p>
+                                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center mt-6">
+                                        <div class="flex-shrink-0">
+                                            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-2 mx-auto border-2 border-blue-200"><span class="text-blue-600 text-3xl">📊</span></div>
+                                            <h4 class="font-bold">Asana Data</h4>
+                                        </div>
+                                        <div class="text-blue-400 text-4xl font-light transform rotate-90 md:rotate-0">→</div>
+                                        <div>
+                                            <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mb-2 mx-auto border-2 border-purple-200"><span class="text-purple-600 text-3xl">🔗</span></div>
+                                            <h4 class="font-bold">API Integration</h4>
+                                        </div>
+                                        <div class="text-purple-400 text-4xl font-light transform rotate-90 md:rotate-0">→</div>
+                                        <div class="flex-shrink-0">
+                                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-2 mx-auto border-2 border-green-200"><span class="text-green-600 text-3xl">📈</span></div>
+                                            <h4 class="font-bold">Power BI Reports</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div>
+                                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">What I Achieved</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-slate-600">
+                                    <div class="impact-list-item">First-ever real-time GTM portfolio visibility for leadership.</div>
+                                    <div class="impact-list-item">Enabled proactive resource allocation and planning.</div>
+                                    <div class="impact-list-item">Created a single source of truth for all GTM projects.</div>
+                                    <div class="impact-list-item">Transformed culture from reactive to data-driven planning.</div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-12">
+                                <a href="#case-studies-nav" class="back-to-portfolio-btn bg-slate-200 text-slate-800 font-semibold px-6 py-2 rounded-lg hover:bg-slate-300 transition-all">↑ Back to Case Studies</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multi-AI Workflow Case Study Section -->
+        <section id="multi-ai-workflow" class="case-study-section py-20 lg:py-24">
+             <div class="container mx-auto px-4 max-w-5xl">
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+                    <div class="p-8 md:p-12 text-center text-white bg-gradient-to-br from-slate-700 to-gray-900">
+                        <h2 class="text-3xl md:text-4xl font-extrabold">Multi-AI Workflow Template</h2>
+                        <p class="mt-2 text-lg opacity-90">An engineered solution for orchestrating complex, multi-model AI inputs into a single, cohesive solution design.</p>
+                    </div>
+                    <div class="p-8 md:p-12 space-y-8">
+                        <div class="p-6 bg-green-50 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-bold text-green-800">Efficiency Note</h4>
+                            <p class="text-slate-600 mt-2">Where applicable, all text fields in this template were populated using voice-to-text, reducing data entry time by an estimated 90% and demonstrating a commitment to rapid, efficient documentation.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 border-l-4 border-slate-400 pl-4 mb-4">1. Project Definition</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-slate-50 rounded-lg">
+                                <div>
+                                    <label for="project-title" class="block text-sm font-medium text-gray-700 mb-1">Project Title</label>
+                                    <input type="text" id="project-title" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., Q3 Marketing Campaign Analysis">
+                                </div>
+                                <div>
+                                    <label for="project-date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                                    <input type="date" id="project-date" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="project-objective" class="block text-sm font-medium text-gray-700 mb-1">Primary Objective</label>
+                                    <textarea id="project-objective" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Describe the final, desired outcome. What does success look like?"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 border-l-4 border-slate-400 pl-4 mb-4">2. The AI Team & Roles</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 bg-slate-50 rounded-lg">
+                                <div>
+                                    <label for="model-1-name" class="block text-sm font-medium text-gray-700 mb-1">Model 1</label>
+                                    <input type="text" id="model-1-name" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., ChatGPT-4o">
+                                    <label for="model-1-role" class="block text-sm font-medium text-gray-700 mt-2 mb-1">Assigned Role</label>
+                                    <input type="text" id="model-1-role" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Creative Draft Writer">
+                                </div>
+                                <div>
+                                    <label for="model-2-name" class="block text-sm font-medium text-gray-700 mb-1">Model 2</label>
+                                    <input type="text" id="model-2-name" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Claude 3 Opus">
+                                    <label for="model-2-role" class="block text-sm font-medium text-gray-700 mt-2 mb-1">Assigned Role</label>
+                                    <input type="text" id="model-2-role" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Logical Refiner">
+                                </div>
+                                <div>
+                                    <label for="model-3-name" class="block text-sm font-medium text-gray-700 mb-1">Model 3</label>
+                                    <input type="text" id="model-3-name" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Perplexity">
+                                    <label for="model-3-role" class="block text-sm font-medium text-gray-700 mt-2 mb-1">Assigned Role</label>
+                                    <input type="text" id="model-3-role" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Fact-Checker">
+                                </div>
+                                <div>
+                                    <label for="model-4-name" class="block text-sm font-medium text-gray-700 mb-1">Model 4</label>
+                                    <input type="text" id="model-4-name" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Gemini 2.5 Pro">
+                                    <label for="model-4-role" class="block text-sm font-medium text-gray-700 mt-2 mb-1">Assigned Role</label>
+                                    <input type="text" id="model-4-role" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Final Synthesizer">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 border-l-4 border-slate-400 pl-4 mb-4">3. Workflow Log</h3>
+                            <div id="workflow-log" class="space-y-6">
+                            </div>
+                            <div class="mt-6 text-center">
+                                <button id="add-step-btn" class="bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all hover:-translate-y-0.5">
+                                    + Add Workflow Step
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-center mt-12">
+                            <a href="#case-studies-nav" class="back-to-portfolio-btn bg-slate-200 text-slate-800 font-semibold px-6 py-2 rounded-lg hover:bg-slate-300 transition-all">↑ Back to Case Studies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <div>
-      <h3 class="font-bold text-lg mb-2">Solution Methods</h3>
-      <p class="text-sm text-slate-600">
-        Solution Architecture · API Pipelines · Workflow Automation · Rapid Prototyping · Stakeholder Discovery
-      </p>
-    </div>
-    <div>
-      <h3 class="font-bold text-lg mb-2">Business Impact</h3>
-      <p class="text-sm text-slate-600">
-        GTM Optimization · Revenue Enablement · Customer Intelligence · Real-Time Reporting · Cross-Functional Collab
-      </p>
-    </div>
-  </div>
-</section>
 
-<!-- ===== CASE STUDIES SUMMARY (Asana / VoC / Mercedes / Dashboard) ===== -->
-<section id="case-studies" class="py-20 bg-white border-b border-slate-200">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-3xl font-extrabold text-center mb-12">Case Studies</h2>
-    <div class="grid gap-8 md:grid-cols-2">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Script for Multi-AI Workflow tool
+            const addStepBtn = document.getElementById('add-step-btn');
+            const workflowLog = document.getElementById('workflow-log');
+            let stepCounter = 0;
 
-      <!-- Asana -->
-      <div class="border rounded-xl shadow">
-        <div class="p-6 bg-gradient-to-br from-green-500 to-emerald-700 text-white">
-          <h3 class="text-2xl font-bold">Asana Enterprise Implementation</h3>
-          <p class="text-sm mt-1">
-            Unified six GTM portfolios & Onboarded 150+ users → GTM velocity ↑ 25 %.
-          </p>
-          <a class="underline text-xs" href="https://james-bonaguro.github.io/#asana" target="_blank">
-            Read full case study →
-          </a>
-        </div>
-        <div class="p-6 grid grid-cols-2 text-center gap-4">
-          <div><span class="font-bold text-lg text-green-700">150+</span><br/><span class="text-xs">Users</span></div>
-          <div><span class="font-bold text-lg text-green-700">25 %</span><br/><span class="text-xs">Velocity</span></div>
-          <div><span class="font-bold text-lg text-green-700">90 %</span><br/><span class="text-xs">Adoption</span></div>
-          <div><span class="font-bold text-lg text-green-700">8 hrs</span><br/><span class="text-xs">Saved/Week</span></div>
-        </div>
-      </div>
+            const dateInput = document.getElementById('project-date');
+            if (dateInput) {
+                dateInput.valueAsDate = new Date();
+            }
 
-      <!-- VoC -->
-      <div class="border rounded-xl shadow">
-        <div class="p-6 bg-gradient-to-br from-blue-500 to-indigo-700 text-white">
-          <h3 class="text-2xl font-bold">Voice of Customer Transformation</h3>
-          <p class="text-sm mt-1">
-            Built unified SFDC ↔ Qualtrics pipeline; response rate ↑ 100 % & Instant feedback alerts fired.
-          </p>
-          <a class="underline text-xs" href="https://james-bonaguro.github.io/#voc" target="_blank">
-            Read full case study →
-          </a>
-        </div>
-        <div class="p-6 grid grid-cols-2 text-center gap-4">
-          <div><span class="font-bold text-lg text-indigo-700">100 %</span><br/><span class="text-xs">Responses</span></div>
-          <div><span class="font-bold text-lg text-indigo-700">Instant</span><br/><span class="text-xs">Alerts</span></div>
-          <div><span class="font-bold text-lg text-indigo-700">90 %</span><br/><span class="text-xs">Manual ↓</span></div>
-          <div><span class="font-bold text-lg text-indigo-700">Unified</span><br/><span class="text-xs">NPS & CSAT</span></div>
-        </div>
-      </div>
+            function addStep() {
+                stepCounter++;
+                const stepId = `step-${stepCounter}`;
 
-      <!-- Mercedes -->
-      <div class="border rounded-xl shadow">
-        <div class="p-6 bg-gradient-to-br from-neutral-600 to-neutral-900 text-white">
-          <h3 class="text-2xl font-bold">Mercedes Dealership Group Leadership</h3>
-          <p class="text-sm mt-1">
-            Helped scale from 2 → 4 rooftops and modernize F&I; exit at premium valuation.
-          </p>
-          <a class="underline text-xs" href="https://james-bonaguro.github.io/#mercedes" target="_blank">
-            Read full case study →
-          </a>
-        </div>
-        <div class="p-6 grid grid-cols-2 text-center gap-4">
-          <div><span class="font-bold text-lg">$1,900</span><br/><span class="text-xs">PVR Above Avg</span></div>
-          <div><span class="font-bold text-lg">100+</span><br/><span class="text-xs">Employees</span></div>
-          <div><span class="font-bold text-lg">~0 %</span><br/><span class="text-xs">Turnover</span></div>
-          <div><span class="font-bold text-lg">Exit</span><br/><span class="text-xs">Successful</span></div>
-        </div>
-      </div>
+                const stepElement = document.createElement('article');
+                stepElement.className = 'p-6 bg-slate-100 rounded-lg border border-slate-200';
+                stepElement.id = stepId;
 
-      <!-- Dashboard -->
-      <div class="border rounded-xl shadow">
-        <div class="p-6 bg-gradient-to-br from-sky-500 to-blue-700 text-white">
-          <h3 class="text-2xl font-bold">Operational Intelligence Dashboard</h3>
-          <p class="text-sm mt-1">
-            Orchestrated Asana API → Power BI pipeline; red risks spotted 3 weeks early.
-          </p>
-          <a class="underline text-xs" href="https://james-bonaguro.github.io/#gtm-intelligence" target="_blank">
-            Read full case study →
-          </a>
-        </div>
-        <div class="p-6 grid grid-cols-2 text-center gap-4">
-          <div><span class="font-bold text-lg">→30 min</span><br/><span class="text-xs">Meetings</span></div>
-          <div><span class="font-bold text-lg">Weekly</span><br/><span class="text-xs">Reports</span></div>
-          <div><span class="font-bold text-lg">API</span><br/><span class="text-xs">Asana ▸ BI</span></div>
-          <div><span class="font-bold text-lg">3 wks</span><br/><span class="text-xs">Risk Lead</span></div>
-        </div>
-      </div>
+                stepElement.innerHTML = `
+                    <div class="flex justify-between items-center border-b border-slate-300 pb-3 mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800">Step ${stepCounter}</h4>
+                        <button class="remove-step-btn text-red-500 hover:text-red-700 font-semibold text-sm" data-step-id="${stepId}">Remove</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                        <div>
+                            <label for="${stepId}-from" class="block text-sm font-medium text-gray-700 mb-1">From</label>
+                            <input type="text" id="${stepId}-from" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Human">
+                        </div>
+                        <div>
+                            <label for="${stepId}-to" class="block text-sm font-medium text-gray-700 mb-1">To</label>
+                            <input type="text" id="${stepId}-to" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., ChatGPT-4o">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="${stepId}-prompt" class="block text-sm font-medium text-gray-700 mb-1">Prompt</label>
+                        <textarea id="${stepId}-prompt" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="Paste your full prompt here."></textarea>
+                    </div>
+                    <div class="mt-4">
+                        <label for="${stepId}-response" class="block text-sm font-medium text-gray-700 mb-1">Response</label>
+                        <textarea id="${stepId}-response" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="Paste the full AI response here."></textarea>
+                    </div>
+                    <div class="mt-4">
+                        <label for="${stepId}-analysis" class="block text-sm font-medium text-gray-700 mb-1">Analysis & Next Steps</label>
+                        <textarea id="${stepId}-analysis" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="Your notes: What's good? What's weak? What's the plan for the next step?"></textarea>
+                    </div>
+                `;
+                workflowLog.appendChild(stepElement);
+            }
 
-    </div>
-  </div>
-</section>
+            function renumberSteps() {
+                const steps = workflowLog.querySelectorAll('article');
+                steps.forEach((step, index) => {
+                    const newStepNumber = index + 1;
+                    const header = step.querySelector('h4');
+                    if (header) {
+                        header.textContent = `Step ${newStepNumber}`;
+                    }
+                });
+                stepCounter = steps.length;
+            }
 
-<!-- ===== CONSULTING (Dentist & Ice-Rink) ===== -->
-<section id="consulting" class="py-20 bg-slate-50 border-b border-slate-200">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-3xl font-extrabold text-center mb-12">Consulting Highlights</h2>
+            if(addStepBtn) {
+                addStepBtn.addEventListener('click', addStep);
+                addStep(); // Add the first step automatically
+            }
 
-    <!-- Dentist -->
-    <div class="mb-10">
-      <h3 class="font-bold text-lg">Dentist Practice Automation</h3>
-      <p class="text-slate-600">
-        Implemented <strong>Weave</strong> scheduling + SMS/email reminders; no-shows ↓ 35 %, freed ≈8 hrs/wk front-desk time.
-      </p>
-    </div>
-
-    <!-- Ice Rink -->
-    <div>
-      <h3 class="font-bold text-lg">Ice-Rink Ops Modernization</h3>
-      <p class="text-slate-600">
-        SimplyBook.me → Square booking & POS flow + Zapier dashboards; synced POS to inventory/payroll—real-time revenue
-        visibility, same-day reconciliation, revenue ↑ 12 %.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== MY APPROACH (AI WORKFLOW) ===== -->
-<section id="ai-approach" class="py-20 bg-slate-900 text-center text-white">
-  <div class="max-w-3xl mx-auto px-4">
-    <div class="text-5xl mb-4">🧠</div>
-    <h3 class="text-3xl font-bold mb-4">My Approach in Action: This Portfolio</h3>
-    <p class="text-slate-300 mb-6">
-      I didn’t code this by hand—I engineered a multi-AI workflow and drafted content with voice-to-text to prove modern
-      tools can deliver high-quality results fast.
-    </p>
-    <a href="https://james-bonaguro.github.io/#multi-ai-workflow" target="_blank" class="underline text-blue-400">
-      View the AI Workflow Template →
-    </a>
-  </div>
-</section>
-
-<!-- ===== CONTACT CTA ===== -->
-<section class="py-20">
-  <div class="text-center">
-    <h2 class="text-3xl font-extrabold mb-6">Ready to Collaborate?</h2>
-    <div class="flex justify-center gap-3 flex-wrap">
-      <a href="mailto:james.bonaguro@gmail.com"
-         class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-lg">
-        Email Me
-      </a>
-      <a href="tel:+17084205462"
-         class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-all shadow-lg">
-        Call / Text Me
-      </a>
-    </div>
-  </div>
-</section>
+            if(workflowLog){
+                workflowLog.addEventListener('click', function(e) {
+                    if (e.target && e.target.classList.contains('remove-step-btn')) {
+                        const stepIdToRemove = e.target.getAttribute('data-step-id');
+                        const stepToRemove = document.getElementById(stepIdToRemove);
+                        if (stepToRemove) {
+                            stepToRemove.remove();
+                            renumberSteps();
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
