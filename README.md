@@ -1,8 +1,8 @@
-# James Bonaguro - Solutions Engineer & Enterprise Software Implementation / Integration Architect
+# James Bonaguro - Solutions Engineer &  Technical Implementation / Integration Architect
 
 Welcome to my professional portfolio.
 
-Built with HTML and Tailwind CSS, it highlights how I design and deliver technical solutions that align with business objectives, drive adoption, and accelerate go-to-market outcomes.
+It highlights how I design and deliver technical solutions that align with business objectives, drive adoption, and accelerate outcomes.
 
 ## 🚀 Live Site
 
