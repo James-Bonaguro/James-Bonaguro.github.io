@@ -9,15 +9,57 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* Custom styles for the portfolio */
     body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif}
-    .stat-card{position:relative}
-    .stat-card .tip{position:absolute;left:50%;transform:translateX(-50%);top:-2.75rem;opacity:0;pointer-events:none}
-    .stat-card:hover .tip{opacity:1}
     html{scroll-padding-top:72px}
+
+    /* Interactive Demo Button Styles */
+    .se-demo-link-section {
+        background-color: white;
+        border-top: 1px solid #e2e8f0; /* slate-200 */
+        border-bottom: 1px solid #e2e8f0; /* slate-200 */
+        padding: 4rem 1rem;
+        text-align: center;
+    }
+    .se-demo-button {
+        display: inline-block;
+        background-color: #0070D2; /* Salesforce Blue */
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 0.5rem; /* rounded-lg */
+        font-size: 1.25rem; /* text-xl */
+        font-weight: 700; /* font-bold */
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 112, 210, 0.2), 0 6px 6px rgba(0, 112, 210, 0.23);
+    }
+    .se-demo-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 14px 28px rgba(0, 112, 210, 0.25), 0 10px 10px rgba(0, 112, 210, 0.22);
+    }
+
+    /* AI Workflow Template Styles */
+    .impact-list-item {
+        display: flex;
+        align-items: start;
+        gap: 0.75rem;
+    }
+    .impact-list-item::before {
+        content: "✓";
+        color: #16a34a; /* green-600 */
+        font-weight: bold;
+        font-size: 1.25rem;
+        line-height: 1.6;
+        flex-shrink: 0;
+    }
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
-  <!-- Sticky Nav (same UX) -->
+  <!-- Sticky Nav -->
   <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
     <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-14 items-center justify-between">
@@ -50,12 +92,11 @@
       <div class="mt-7 flex flex-wrap justify-center gap-3">
         <a href="https://linkedin.com/in/jamesbonaguro" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-2.5 font-semibold shadow hover:bg-slate-100">LinkedIn</a>
         <a href="#case-studies" class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-2.5 font-semibold shadow hover:bg-slate-100">View Case Studies</a>
-        <a href="JamesBonaguro_Portfolio.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-2.5 font-semibold shadow hover:bg-slate-100">View Portfolio PDF</a>
       </div>
     </div>
   </section>
 
-  <!-- About (updated copy) -->
+  <!-- About -->
   <section id="about" class="border-t-2 border-slate-200 bg-white">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
       <h2 class="text-2xl font-extrabold tracking-tight text-slate-900">About Me</h2>
@@ -86,27 +127,27 @@
   <!-- Impact Strip -->
   <section class="bg-white border-t-2 border-slate-200">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-      <div class="stat-card group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div class="group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
         <div class="text-base font-extrabold text-slate-900">150+ onboarded → 25% faster GTM</div>
         <div class="text-xs text-slate-600">Standardized workflows across 6 portfolios</div>
         <a href="#cs-asana" class="mt-2 inline-block text-[11px] text-indigo-600 underline underline-offset-2">Read full case study →</a>
       </div>
-      <div class="stat-card group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div class="group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
         <div class="text-base font-extrabold text-slate-900">90%+ adoption across 150+ users</div>
         <div class="text-xs text-slate-600">Champion network & targeted onboarding</div>
         <a href="#cs-asana" class="mt-2 inline-block text-[11px] text-indigo-600 underline underline-offset-2">Read full case study →</a>
       </div>
-      <div class="stat-card group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div class="group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
         <div class="text-base font-extrabold text-slate-900">Live GTM visibility; 2h → 30m meetings</div>
         <div class="text-xs text-slate-600">Automated Asana → Power BI pipeline & dashboard</div>
         <a href="#cs-ops-intel" class="mt-2 inline-block text-[11px] text-indigo-600 underline underline-offset-2">Read full case study →</a>
       </div>
-      <div class="stat-card group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div class="group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
         <div class="text-base font-extrabold text-slate-900">VoC: 2× response (6% → 13%)</div>
         <div class="text-xs text-slate-600">Qualtrics → Salesforce with instant alerts</div>
         <a href="#cs-voc" class="mt-2 inline-block text-[11px] text-indigo-600 underline underline-offset-2">Read full case study →</a>
       </div>
-      <div class="stat-card group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div class="group rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
         <div class="text-base font-extrabold text-slate-900">38% F&I revenue lift</div>
         <div class="text-xs text-slate-600">Darwin & DealerTrack rollout; 3-day faster funding</div>
         <a href="#cs-mercedes" class="mt-2 inline-block text-[11px] text-indigo-600 underline underline-offset-2">Read full case study →</a>
@@ -114,18 +155,26 @@
     </div>
   </section>
 
-  <!-- My Approach -->
-  <section class="bg-slate-900 text-white border-t-2 border-slate-200">
+  <!-- My Approach (Updated) -->
+  <section class="bg-slate-100 border-t-2 border-slate-200">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-14 text-center">
-      <div class="text-4xl mb-3">🧠</div>
-      <h2 class="text-2xl font-extrabold">My Approach in Action: This Portfolio</h2>
-      <p class="mt-3 max-w-3xl mx-auto text-white/80">I didn’t code this by hand—I engineered a multi-AI workflow and drafted the content with voice-to-text to prove modern tools can deliver high-quality results fast.</p>
-      <a href="#" class="mt-4 inline-block underline underline-offset-4">View the AI Workflow Template →</a>
+      <h2 class="text-2xl font-extrabold text-slate-900">My Approach in Action: This Portfolio</h2>
+      <p class="mt-3 max-w-3xl mx-auto text-slate-600">I didn’t code this by hand—I engineered a multi-AI workflow and drafted the content with voice-to-text to prove modern tools can deliver high-quality results fast.</p>
+      <a href="#multi-ai-workflow" class="mt-4 inline-block text-indigo-600 underline underline-offset-4">View the AI Workflow Template →</a>
     </div>
   </section>
 
-  <!-- Section break band -->
-  <div class="w-full h-2 bg-gradient-to-r from-slate-200 via-slate-300 to-slate-200"></div>
+  <!-- SE Demo Link Section (Added) -->
+  <section class="se-demo-link-section">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <a href="se-demo.html" target="_blank" class="se-demo-button">
+              Launch Interactive Demo
+          </a>
+          <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
+              Explore the end-to-end solutions engineering methodology I use to map customer challenges to business value.
+          </p>
+      </div>
+  </section>
 
   <!-- Case Studies Grid -->
   <section id="case-studies" class="bg-slate-50 border-t-2 border-slate-200">
@@ -324,11 +373,166 @@
         </div>
         <div class="px-6 pb-8 text-center"><a href="#top" class="inline-block text-sm text-indigo-600 underline underline-offset-2">↑ Back to top</a></div>
       </article>
+
+      <!-- AI Workflow Template (Added) -->
+      <article id="multi-ai-workflow" class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm">
+        <div class="p-6 md:p-10 bg-gradient-to-r from-slate-700 to-slate-900 text-white">
+            <h3 class="text-2xl font-extrabold">Multi-AI Workflow Template</h3>
+            <p class="mt-2 text-sm opacity-90">An engineered solution for orchestrating complex, multi-model AI inputs into a single, cohesive solution design.</p>
+        </div>
+        <div class="p-6 md:p-10 space-y-8">
+            <div class="p-6 bg-green-50 rounded-lg border-l-4 border-green-500">
+                <h4 class="font-bold text-green-800">Efficiency Note</h4>
+                <p class="text-slate-600 mt-2">Where applicable, all text fields in this template were populated using voice-to-text, reducing data entry time by an estimated 90% and demonstrating a commitment to rapid, efficient documentation.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-slate-400 pl-4 mb-4">1. Project Definition</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-slate-50 rounded-lg">
+                    <div>
+                        <label for="project-title" class="block text-sm font-medium text-gray-700 mb-1">Project Title</label>
+                        <input type="text" id="project-title" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., Q3 Marketing Campaign Analysis">
+                    </div>
+                    <div>
+                        <label for="project-date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                        <input type="date" id="project-date" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="project-objective" class="block text-sm font-medium text-gray-700 mb-1">Primary Objective</label>
+                        <textarea id="project-objective" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Describe the final, desired outcome. What does success look like?"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-slate-400 pl-4 mb-4">2. The AI Team & Roles</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 bg-slate-50 rounded-lg">
+                    <div>
+                        <label for="model-1-name" class="block text-sm font-medium text-gray-700 mb-1">Model 1</label>
+                        <input type="text" id="model-1-name" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., ChatGPT-4o">
+                        <label for="model-1-role" class="block text-sm font-medium text-gray-700 mt-2 mb-1">Assigned Role</label>
+                        <input type="text" id="model-1-role" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Creative Draft Writer">
+                    </div>
+                    <div>
+                        <label for="model-2-name" class="block text-sm font-medium text-gray-700 mb-1">Model 2</label>
+                        <input type="text" id="model-2-name" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Claude 3 Opus">
+                        <label for="model-2-role" class="block text-sm font-medium text-gray-700 mt-2 mb-1">Assigned Role</label>
+                        <input type="text" id="model-2-role" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Logical Refiner">
+                    </div>
+                    <div>
+                        <label for="model-3-name" class="block text-sm font-medium text-gray-700 mb-1">Model 3</label>
+                        <input type="text" id="model-3-name" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Perplexity">
+                        <label for="model-3-role" class="block text-sm font-medium text-gray-700 mt-2 mb-1">Assigned Role</label>
+                        <input type="text" id="model-3-role" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Fact-Checker">
+                    </div>
+                    <div>
+                        <label for="model-4-name" class="block text-sm font-medium text-gray-700 mb-1">Model 4</label>
+                        <input type="text" id="model-4-name" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Gemini Pro">
+                        <label for="model-4-role" class="block text-sm font-medium text-gray-700 mt-2 mb-1">Assigned Role</label>
+                        <input type="text" id="model-4-role" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Final Synthesizer">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 border-l-4 border-slate-400 pl-4 mb-4">3. Workflow Log</h3>
+                <div id="workflow-log" class="space-y-6">
+                    <!-- Workflow steps will be added here by JavaScript -->
+                </div>
+                <div class="mt-6 text-center">
+                    <button id="add-step-btn" class="bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all hover:-translate-y-0.5">
+                        + Add Workflow Step
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="px-6 pb-8 text-center"><a href="#top" class="inline-block text-sm text-indigo-600 underline underline-offset-2">↑ Back to top</a></div>
+      </article>
+
     </div>
   </section>
 
   <script>
-    document.getElementById('updated').textContent = new Date().toLocaleString('en-US',{month:'long', year:'numeric'});
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set the last updated date
+      document.getElementById('updated').textContent = new Date().toLocaleString('en-US',{month:'long', year:'numeric'});
+
+      // --- Script for Multi-AI Workflow tool ---
+      const addStepBtn = document.getElementById('add-step-btn');
+      const workflowLog = document.getElementById('workflow-log');
+      let stepCounter = 0;
+
+      const dateInput = document.getElementById('project-date');
+      if (dateInput) {
+          dateInput.valueAsDate = new Date();
+      }
+
+      function addStep() {
+          stepCounter++;
+          const stepId = `step-${stepCounter}`;
+
+          const stepElement = document.createElement('article');
+          stepElement.className = 'p-6 bg-slate-100 rounded-lg border border-slate-200';
+          stepElement.id = stepId;
+
+          stepElement.innerHTML = `
+              <div class="flex justify-between items-center border-b border-slate-300 pb-3 mb-4">
+                  <h4 class="text-lg font-semibold text-gray-800">Step ${stepCounter}</h4>
+                  <button class="remove-step-btn text-red-500 hover:text-red-700 font-semibold text-sm" data-step-id="${stepId}">Remove</button>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                  <div>
+                      <label for="${stepId}-from" class="block text-sm font-medium text-gray-700 mb-1">From</label>
+                      <input type="text" id="${stepId}-from" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., Human">
+                  </div>
+                  <div>
+                      <label for="${stepId}-to" class="block text-sm font-medium text-gray-700 mb-1">To</label>
+                      <input type="text" id="${stepId}-to" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., ChatGPT-4o">
+                  </div>
+              </div>
+              <div>
+                  <label for="${stepId}-prompt" class="block text-sm font-medium text-gray-700 mb-1">Prompt</label>
+                  <textarea id="${stepId}-prompt" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="Paste your full prompt here."></textarea>
+              </div>
+              <div class="mt-4">
+                  <label for="${stepId}-response" class="block text-sm font-medium text-gray-700 mb-1">Response</label>
+                  <textarea id="${stepId}-response" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="Paste the full AI response here."></textarea>
+              </div>
+              <div class="mt-4">
+                  <label for="${stepId}-analysis" class="block text-sm font-medium text-gray-700 mb-1">Analysis & Next Steps</label>
+                  <textarea id="${stepId}-analysis" class="w-full p-2 border border-gray-300 rounded-md shadow-sm" placeholder="Your notes: What's good? What's weak? What's the plan for the next step?"></textarea>
+              </div>
+          `;
+          workflowLog.appendChild(stepElement);
+      }
+
+      function renumberSteps() {
+          const steps = workflowLog.querySelectorAll('article');
+          steps.forEach((step, index) => {
+              const newStepNumber = index + 1;
+              const header = step.querySelector('h4');
+              if (header) {
+                  header.textContent = `Step ${newStepNumber}`;
+              }
+          });
+          stepCounter = steps.length;
+      }
+
+      if(addStepBtn) {
+          addStepBtn.addEventListener('click', addStep);
+          addStep(); // Add the first step automatically
+      }
+
+      if(workflowLog){
+          workflowLog.addEventListener('click', function(e) {
+              if (e.target && e.target.classList.contains('remove-step-btn')) {
+                  const stepIdToRemove = e.target.getAttribute('data-step-id');
+                  const stepToRemove = document.getElementById(stepIdToRemove);
+                  if (stepToRemove) {
+                      stepToRemove.remove();
+                      renumberSteps();
+                  }
+              }
+          });
+      }
+    });
   </script>
 </body>
 </html>
