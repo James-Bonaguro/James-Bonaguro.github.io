@@ -3,6 +3,7 @@ James Bonaguro | Solutions Engineer & Integration Architect
 Welcome to my professional portfolio. This site showcases how I design and deliver technical solutions that align with business objectives, drive user adoption, and accelerate outcomes.
 
 🚀 Live Portfolio
+
 james-bonaguro.github.io
 
 📬 Contact
