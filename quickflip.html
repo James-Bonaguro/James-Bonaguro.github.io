@@ -25,6 +25,7 @@
             --red: #ef4444;
             --red-bg: rgba(239, 68, 68, 0.1);
             --blue: #3b82f6;
+            --orange: #f97316;
         }
 
         body {
@@ -70,6 +71,17 @@
             margin-bottom: 16px;
         }
 
+        .section-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
         .input-group {
             margin-bottom: 16px;
         }
@@ -113,6 +125,62 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
+        }
+
+        .row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        /* Toggle buttons for condition */
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            min-width: 60px;
+            padding: 10px 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .toggle-btn:hover {
+            border-color: var(--blue);
+        }
+
+        .toggle-btn.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+        }
+
+        .toggle-btn.active-green {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+        }
+
+        .toggle-btn.active-yellow {
+            background: var(--yellow);
+            border-color: var(--yellow);
+            color: black;
+        }
+
+        .toggle-btn.active-red {
+            background: var(--red);
+            border-color: var(--red);
+            color: white;
         }
 
         .btn {
@@ -254,6 +322,39 @@
             margin-top: 2px;
         }
 
+        .breakdown-value.warning {
+            color: var(--orange);
+        }
+
+        /* Recon breakdown detail */
+        .recon-detail {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+        }
+
+        .recon-detail-title {
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .recon-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            padding: 4px 0;
+            color: var(--muted);
+        }
+
+        .recon-item span:last-child {
+            font-family: 'Space Mono', monospace;
+            color: var(--text);
+        }
+
         /* Disclaimer */
         .disclaimer {
             text-align: center;
@@ -273,6 +374,34 @@
         input[type="number"] {
             -moz-appearance: textfield;
         }
+
+        /* Warning flags */
+        .flags {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .flag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--red-bg);
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+
+        .flag.warn {
+            background: var(--yellow-bg);
+            color: var(--yellow);
+        }
+
+        .flag:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -284,6 +413,8 @@
 
         <!-- Input Form -->
         <div class="card" id="inputCard">
+            <div class="section-title">Vehicle Info</div>
+
             <div class="row">
                 <div class="input-group">
                     <label>Year</label>
@@ -335,11 +466,84 @@
 
             <div class="input-group">
                 <label>Auction Price (what you'd pay)</label>
-                <input type="number" id="auctionPrice" placeholder="$18,500" min="0" step="100">
+                <input type="number" id="auctionPrice" placeholder="18500" min="0" step="100">
+            </div>
+        </div>
+
+        <!-- CarFax / History -->
+        <div class="card" id="historyCard">
+            <div class="section-title">CarFax / History</div>
+
+            <div class="input-group">
+                <label>Accident History</label>
+                <div class="toggle-group" id="accidentGroup">
+                    <button type="button" class="toggle-btn active-green active" data-value="none">Clean</button>
+                    <button type="button" class="toggle-btn" data-value="minor">Minor</button>
+                    <button type="button" class="toggle-btn" data-value="major">Major</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label># of Owners</label>
+                <div class="toggle-group" id="ownersGroup">
+                    <button type="button" class="toggle-btn active-green active" data-value="1">1</button>
+                    <button type="button" class="toggle-btn" data-value="2">2</button>
+                    <button type="button" class="toggle-btn" data-value="3">3+</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Service Records</label>
+                <div class="toggle-group" id="serviceGroup">
+                    <button type="button" class="toggle-btn active-green active" data-value="full">Full</button>
+                    <button type="button" class="toggle-btn" data-value="partial">Partial</button>
+                    <button type="button" class="toggle-btn" data-value="none">None</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Condition Assessment -->
+        <div class="card" id="conditionCard">
+            <div class="section-title">Condition (Quick Look)</div>
+
+            <div class="input-group">
+                <label>Tires</label>
+                <div class="toggle-group" id="tiresGroup">
+                    <button type="button" class="toggle-btn active-green active" data-value="good">Good</button>
+                    <button type="button" class="toggle-btn" data-value="fair">50%</button>
+                    <button type="button" class="toggle-btn" data-value="replace">Replace</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Brakes</label>
+                <div class="toggle-group" id="brakesGroup">
+                    <button type="button" class="toggle-btn active-green active" data-value="good">Good</button>
+                    <button type="button" class="toggle-btn" data-value="fair">Fair</button>
+                    <button type="button" class="toggle-btn" data-value="replace">Replace</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Body / Paint</label>
+                <div class="toggle-group" id="bodyGroup">
+                    <button type="button" class="toggle-btn active-green active" data-value="clean">Clean</button>
+                    <button type="button" class="toggle-btn" data-value="dings">Dings/Chips</button>
+                    <button type="button" class="toggle-btn" data-value="damage">Dents/Damage</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Interior</label>
+                <div class="toggle-group" id="interiorGroup">
+                    <button type="button" class="toggle-btn active-green active" data-value="clean">Clean</button>
+                    <button type="button" class="toggle-btn" data-value="wear">Normal Wear</button>
+                    <button type="button" class="toggle-btn" data-value="rough">Rough</button>
+                </div>
             </div>
 
             <div class="input-group" style="margin-top: 20px;">
-                <button class="btn" onclick="calculate()">Calculate Profit →</button>
+                <button class="btn" onclick="calculate()">Calculate Profit</button>
             </div>
         </div>
 
@@ -353,14 +557,14 @@
             <div class="profit-display profit-good" id="profitDisplay">
                 <div class="profit-label">Estimated Profit</div>
                 <div class="profit-amount" id="profitAmount">$3,200</div>
-                <div class="verdict" id="verdict">✓ Good flip - bid with confidence</div>
+                <div class="verdict" id="verdict">Good flip - bid with confidence</div>
             </div>
 
             <div class="breakdown">
                 <div class="breakdown-row">
                     <div>
                         <div class="breakdown-label">Retail Value</div>
-                        <div class="breakdown-note">Based on local market</div>
+                        <div class="breakdown-note">Adjusted for history/condition</div>
                     </div>
                     <div class="breakdown-value" id="retailValue">$24,500</div>
                 </div>
@@ -373,13 +577,13 @@
                 <div class="breakdown-row">
                     <div>
                         <div class="breakdown-label">Est. Recon</div>
-                        <div class="breakdown-note">Detail, inspection, minor fixes</div>
+                        <div class="breakdown-note">Based on condition inputs</div>
                     </div>
-                    <div class="breakdown-value" id="reconCost">$800</div>
+                    <div class="breakdown-value" id="reconCost">$1,150</div>
                 </div>
                 <div class="breakdown-row">
                     <div>
-                        <div class="breakdown-label">Auction/Transport Fees</div>
+                        <div class="breakdown-label">Fees (auction + transport)</div>
                     </div>
                     <div class="breakdown-value" id="fees">$450</div>
                 </div>
@@ -390,43 +594,93 @@
                     <div class="breakdown-value" id="margin">16.2%</div>
                 </div>
             </div>
+
+            <!-- Recon Breakdown -->
+            <div class="recon-detail" id="reconDetail">
+                <div class="recon-detail-title">Recon Breakdown</div>
+                <div id="reconItems"></div>
+            </div>
+
+            <!-- Warning Flags -->
+            <div class="flags" id="flags"></div>
         </div>
 
         <p class="disclaimer">
-            Estimates based on market averages. Always run your own numbers.
-            Not financial advice. Built for speed, not precision.
+            Estimates based on industry averages. Recon costs from NIADA 2023 data (~$1,100-$1,300 avg).
+            CarFax value impacts from CARFAX research. Always verify with your own inspection.
         </p>
     </div>
 
     <script>
-        // Base retail values by make (rough averages, would be replaced by real API)
+        // Toggle button logic
+        document.querySelectorAll('.toggle-group').forEach(group => {
+            group.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    group.querySelectorAll('.toggle-btn').forEach(b => {
+                        b.classList.remove('active', 'active-green', 'active-yellow', 'active-red');
+                    });
+
+                    const value = btn.dataset.value;
+                    btn.classList.add('active');
+
+                    // Color based on value
+                    if (['none', 'good', 'clean', 'full', '1'].includes(value)) {
+                        btn.classList.add('active-green');
+                    } else if (['minor', 'fair', 'dings', 'wear', 'partial', '2'].includes(value)) {
+                        btn.classList.add('active-yellow');
+                    } else {
+                        btn.classList.add('active-red');
+                    }
+                });
+            });
+        });
+
+        function getToggleValue(groupId) {
+            const group = document.getElementById(groupId);
+            const active = group.querySelector('.toggle-btn.active');
+            return active ? active.dataset.value : null;
+        }
+
+        // Make multipliers (brand strength for retail markup)
         const makeMultipliers = {
-            'toyota': 1.15,
-            'honda': 1.12,
-            'lexus': 1.20,
-            'subaru': 1.10,
-            'mazda': 1.05,
-            'hyundai': 0.95,
-            'kia': 0.93,
-            'ford': 1.00,
-            'chevrolet': 0.98,
-            'gmc': 1.02,
-            'ram': 1.05,
-            'jeep': 1.03,
-            'dodge': 0.92,
-            'nissan': 0.90,
-            'volkswagen': 0.88,
-            'bmw': 0.85,
-            'mercedes': 0.87,
-            'audi': 0.84,
-            'acura': 1.05,
-            'infiniti': 0.88,
-            'buick': 0.90,
-            'cadillac': 0.88,
-            'chrysler': 0.85,
-            'lincoln': 0.90,
-            'volvo': 0.92,
-            'other': 0.95
+            'toyota': 1.15, 'honda': 1.12, 'lexus': 1.20, 'subaru': 1.10,
+            'mazda': 1.05, 'hyundai': 0.95, 'kia': 0.93, 'ford': 1.00,
+            'chevrolet': 0.98, 'gmc': 1.02, 'ram': 1.05, 'jeep': 1.03,
+            'dodge': 0.92, 'nissan': 0.90, 'volkswagen': 0.88, 'bmw': 0.85,
+            'mercedes': 0.87, 'audi': 0.84, 'acura': 1.05, 'infiniti': 0.88,
+            'buick': 0.90, 'cadillac': 0.88, 'chrysler': 0.85, 'lincoln': 0.90,
+            'volvo': 0.92, 'other': 0.95
+        };
+
+        // Recon cost factors (based on NIADA/industry data)
+        const reconCosts = {
+            // Base costs
+            base: 400, // Minimum: inspection, detail, photos
+
+            // Age-based
+            ageOver3: 150,
+            ageOver6: 250,
+            ageOver10: 350,
+
+            // Mileage-based
+            milesOver60k: 150,
+            milesOver100k: 300,
+            milesOver150k: 450,
+
+            // Condition-based (from inputs)
+            tires: { good: 0, fair: 200, replace: 600 },
+            brakes: { good: 0, fair: 150, replace: 400 },
+            body: { clean: 0, dings: 250, damage: 800 },
+            interior: { clean: 0, wear: 150, rough: 400 },
+
+            // Service history
+            serviceRecords: { full: 0, partial: 100, none: 250 }
+        };
+
+        // CarFax value impacts (from CARFAX research)
+        const carfaxImpact = {
+            accident: { none: 0, minor: 500, major: 2000 },
+            owners: { '1': 0, '2': 200, '3': 500 }
         };
 
         function calculate() {
@@ -436,93 +690,201 @@
             const model = document.getElementById('model').value;
             const auctionPrice = parseInt(document.getElementById('auctionPrice').value);
 
+            // Get toggle values
+            const accident = getToggleValue('accidentGroup');
+            const owners = getToggleValue('ownersGroup');
+            const service = getToggleValue('serviceGroup');
+            const tires = getToggleValue('tiresGroup');
+            const brakes = getToggleValue('brakesGroup');
+            const body = getToggleValue('bodyGroup');
+            const interior = getToggleValue('interiorGroup');
+
             // Validation
             if (!year || !mileage || !make || !model || !auctionPrice) {
-                alert('Please fill in all fields');
+                alert('Please fill in all vehicle info fields');
                 return;
             }
 
-            // Calculate age depreciation (rough)
             const currentYear = 2025;
             const age = currentYear - year;
-            const ageDepreciation = Math.pow(0.88, Math.min(age, 10)); // 12% per year, cap at 10 years
 
-            // Mileage factor (penalty for high mileage)
+            // ========== RECON CALCULATION ==========
+            let reconBreakdown = [];
+            let totalRecon = reconCosts.base;
+            reconBreakdown.push({ label: 'Base (inspect/detail/photos)', cost: reconCosts.base });
+
+            // Age factors
+            if (age > 10) {
+                totalRecon += reconCosts.ageOver10;
+                reconBreakdown.push({ label: 'Age 10+ years', cost: reconCosts.ageOver10 });
+            } else if (age > 6) {
+                totalRecon += reconCosts.ageOver6;
+                reconBreakdown.push({ label: 'Age 6-10 years', cost: reconCosts.ageOver6 });
+            } else if (age > 3) {
+                totalRecon += reconCosts.ageOver3;
+                reconBreakdown.push({ label: 'Age 3-6 years', cost: reconCosts.ageOver3 });
+            }
+
+            // Mileage factors
+            if (mileage > 150000) {
+                totalRecon += reconCosts.milesOver150k;
+                reconBreakdown.push({ label: 'High miles (150k+)', cost: reconCosts.milesOver150k });
+            } else if (mileage > 100000) {
+                totalRecon += reconCosts.milesOver100k;
+                reconBreakdown.push({ label: 'High miles (100k+)', cost: reconCosts.milesOver100k });
+            } else if (mileage > 60000) {
+                totalRecon += reconCosts.milesOver60k;
+                reconBreakdown.push({ label: 'Moderate miles (60k+)', cost: reconCosts.milesOver60k });
+            }
+
+            // Condition factors
+            if (reconCosts.tires[tires] > 0) {
+                totalRecon += reconCosts.tires[tires];
+                reconBreakdown.push({ label: `Tires (${tires})`, cost: reconCosts.tires[tires] });
+            }
+            if (reconCosts.brakes[brakes] > 0) {
+                totalRecon += reconCosts.brakes[brakes];
+                reconBreakdown.push({ label: `Brakes (${brakes})`, cost: reconCosts.brakes[brakes] });
+            }
+            if (reconCosts.body[body] > 0) {
+                totalRecon += reconCosts.body[body];
+                reconBreakdown.push({ label: `Body/paint (${body})`, cost: reconCosts.body[body] });
+            }
+            if (reconCosts.interior[interior] > 0) {
+                totalRecon += reconCosts.interior[interior];
+                reconBreakdown.push({ label: `Interior (${interior})`, cost: reconCosts.interior[interior] });
+            }
+            if (reconCosts.serviceRecords[service] > 0) {
+                totalRecon += reconCosts.serviceRecords[service];
+                reconBreakdown.push({ label: `No/partial service records`, cost: reconCosts.serviceRecords[service] });
+            }
+
+            // ========== VALUE CALCULATION ==========
+
+            // Mileage factor for retail value
             const avgMilesPerYear = mileage / Math.max(age, 1);
             let mileageFactor = 1.0;
-            if (avgMilesPerYear > 15000) mileageFactor = 0.95;
-            if (avgMilesPerYear > 20000) mileageFactor = 0.90;
-            if (mileage > 100000) mileageFactor *= 0.92;
+            if (avgMilesPerYear > 15000) mileageFactor = 0.96;
+            if (avgMilesPerYear > 20000) mileageFactor = 0.92;
+            if (mileage > 100000) mileageFactor *= 0.94;
+            if (mileage > 150000) mileageFactor *= 0.90;
 
-            // Make multiplier (brand strength)
+            // Make multiplier
             const makeMultiplier = makeMultipliers[make] || 0.95;
 
-            // Estimate retail value as markup over auction
-            // Typical retail is 20-35% over wholesale depending on vehicle
-            const baseMarkup = 1.28; // 28% average markup
-            const retailMultiplier = baseMarkup * makeMultiplier * mileageFactor;
-            const retailValue = Math.round(auctionPrice * retailMultiplier / 100) * 100;
+            // Base retail markup (28% over wholesale is industry average)
+            const baseMarkup = 1.28;
+            let retailValue = Math.round(auctionPrice * baseMarkup * makeMultiplier * mileageFactor / 100) * 100;
 
-            // Recon costs (based on age and mileage)
-            let reconBase = 500;
-            if (age > 3) reconBase += 200;
-            if (age > 6) reconBase += 300;
-            if (mileage > 60000) reconBase += 200;
-            if (mileage > 100000) reconBase += 400;
-            const reconCost = Math.round(reconBase / 50) * 50;
+            // CarFax adjustments to retail value
+            const accidentPenalty = carfaxImpact.accident[accident] || 0;
+            const ownerPenalty = carfaxImpact.owners[owners] || 0;
+            retailValue -= (accidentPenalty + ownerPenalty);
 
-            // Auction fees + transport
-            const fees = Math.round(auctionPrice * 0.025) + 300; // 2.5% buyer fee + transport
+            // Fees (auction buyer fee ~2.5% + transport ~$300)
+            const fees = Math.round(auctionPrice * 0.025) + 300;
 
-            // Calculate profit
-            const totalCost = auctionPrice + reconCost + fees;
+            // ========== PROFIT CALCULATION ==========
+            const totalCost = auctionPrice + totalRecon + fees;
             const profit = retailValue - totalCost;
             const margin = ((profit / retailValue) * 100).toFixed(1);
 
-            // Determine verdict
+            // ========== FLAGS / WARNINGS ==========
+            let flags = [];
+            if (accident === 'major') {
+                flags.push({ type: 'danger', text: 'Major accident - harder retail sale, expect price pushback' });
+            } else if (accident === 'minor') {
+                flags.push({ type: 'warn', text: 'Minor accident on CarFax - factor into negotiation' });
+            }
+            if (owners === '3') {
+                flags.push({ type: 'warn', text: '3+ owners - buyers will ask questions' });
+            }
+            if (mileage > 100000) {
+                flags.push({ type: 'warn', text: 'High mileage - budget for surprises' });
+            }
+            if (service === 'none') {
+                flags.push({ type: 'warn', text: 'No service records - unknown maintenance history' });
+            }
+            if (totalRecon > 1500) {
+                flags.push({ type: 'warn', text: `High recon estimate ($${totalRecon.toLocaleString()}) - verify before bidding` });
+            }
+
+            // ========== VERDICT ==========
             let verdictClass, verdictText;
             if (profit >= 2500 && margin >= 12) {
                 verdictClass = 'profit-good';
-                verdictText = '✓ Good flip - bid with confidence';
+                verdictText = 'Good flip - bid with confidence';
             } else if (profit >= 1500 && margin >= 8) {
                 verdictClass = 'profit-ok';
-                verdictText = '⚠ Tight margin - know your buyer';
+                verdictText = 'Tight margin - know your buyer';
+            } else if (profit >= 500) {
+                verdictClass = 'profit-ok';
+                verdictText = 'Thin deal - only if you have a buyer waiting';
             } else {
                 verdictClass = 'profit-bad';
-                verdictText = '✗ Skip it - not worth the risk';
+                verdictText = 'Skip it - not worth the risk';
             }
 
-            // Update UI
+            // ========== UPDATE UI ==========
             const makeName = make.charAt(0).toUpperCase() + make.slice(1);
             document.getElementById('vehicleName').textContent = `${year} ${makeName} ${model}`;
             document.getElementById('profitAmount').textContent = profit >= 0 ? `$${profit.toLocaleString()}` : `-$${Math.abs(profit).toLocaleString()}`;
             document.getElementById('verdict').textContent = verdictText;
             document.getElementById('retailValue').textContent = `$${retailValue.toLocaleString()}`;
             document.getElementById('auctionCost').textContent = `$${auctionPrice.toLocaleString()}`;
-            document.getElementById('reconCost').textContent = `$${reconCost.toLocaleString()}`;
+            document.getElementById('reconCost').textContent = `$${totalRecon.toLocaleString()}`;
             document.getElementById('fees').textContent = `$${fees.toLocaleString()}`;
             document.getElementById('margin').textContent = `${margin}%`;
 
+            // Recon breakdown
+            const reconItemsHtml = reconBreakdown.map(item =>
+                `<div class="recon-item"><span>${item.label}</span><span>$${item.cost}</span></div>`
+            ).join('');
+            document.getElementById('reconItems').innerHTML = reconItemsHtml;
+
+            // Flags
+            const flagsHtml = flags.map(f =>
+                `<div class="flag ${f.type === 'warn' ? 'warn' : ''}">${f.text}</div>`
+            ).join('');
+            document.getElementById('flags').innerHTML = flagsHtml;
+            document.getElementById('flags').style.display = flags.length ? 'block' : 'none';
+
+            // Profit display styling
             const profitDisplay = document.getElementById('profitDisplay');
             profitDisplay.className = `profit-display ${verdictClass}`;
 
-            // Show results
+            // Show results, hide inputs
             document.getElementById('inputCard').style.display = 'none';
+            document.getElementById('historyCard').style.display = 'none';
+            document.getElementById('conditionCard').style.display = 'none';
             document.getElementById('results').classList.add('show');
         }
 
         function reset() {
             document.getElementById('inputCard').style.display = 'block';
+            document.getElementById('historyCard').style.display = 'block';
+            document.getElementById('conditionCard').style.display = 'block';
             document.getElementById('results').classList.remove('show');
+
             // Clear form
             document.getElementById('year').value = '';
             document.getElementById('mileage').value = '';
             document.getElementById('make').value = '';
             document.getElementById('model').value = '';
             document.getElementById('auctionPrice').value = '';
+
+            // Reset toggles to defaults
+            document.querySelectorAll('.toggle-group').forEach(group => {
+                group.querySelectorAll('.toggle-btn').forEach((btn, i) => {
+                    btn.classList.remove('active', 'active-green', 'active-yellow', 'active-red');
+                    if (i === 0) {
+                        btn.classList.add('active', 'active-green');
+                    }
+                });
+            });
         }
 
-        // Allow enter key to submit
+        // Enter key to submit
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && document.getElementById('inputCard').style.display !== 'none') {
                 calculate();
