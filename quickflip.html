@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickFlip - Auction Profit Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0b0d;
+            --card: #131518;
+            --border: #1e2128;
+            --text: #e4e4e7;
+            --muted: #71717a;
+            --green: #22c55e;
+            --green-bg: rgba(34, 197, 94, 0.1);
+            --yellow: #eab308;
+            --yellow-bg: rgba(234, 179, 8, 0.1);
+            --red: #ef4444;
+            --red-bg: rgba(239, 68, 68, 0.1);
+            --blue: #3b82f6;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-top: 12px;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        input::placeholder {
+            color: var(--muted);
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--green) 0%, #16a34a 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:hover {
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Results */
+        .results {
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .vehicle-name {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .reset-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .profit-display {
+            text-align: center;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .profit-display.profit-good {
+            background: var(--green-bg);
+            border: 1px solid var(--green);
+        }
+
+        .profit-display.profit-ok {
+            background: var(--yellow-bg);
+            border: 1px solid var(--yellow);
+        }
+
+        .profit-display.profit-bad {
+            background: var(--red-bg);
+            border: 1px solid var(--red);
+        }
+
+        .profit-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .profit-good .profit-label { color: var(--green); }
+        .profit-ok .profit-label { color: var(--yellow); }
+        .profit-bad .profit-label { color: var(--red); }
+
+        .profit-amount {
+            font-family: 'Space Mono', monospace;
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .profit-good .profit-amount { color: var(--green); }
+        .profit-ok .profit-amount { color: var(--yellow); }
+        .profit-bad .profit-amount { color: var(--red); }
+
+        .verdict {
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .profit-good .verdict { color: var(--green); }
+        .profit-ok .verdict { color: var(--yellow); }
+        .profit-bad .verdict { color: var(--red); }
+
+        .breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breakdown-row:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-label {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .breakdown-value {
+            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .breakdown-note {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 24px;
+            padding: 0 20px;
+            line-height: 1.5;
+        }
+
+        /* Hide number input spinners */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">QuickFlip</div>
+            <div class="tagline">Know your number before you bid</div>
+        </header>
+
+        <!-- Input Form -->
+        <div class="card" id="inputCard">
+            <div class="row">
+                <div class="input-group">
+                    <label>Year</label>
+                    <input type="number" id="year" placeholder="2021" min="1990" max="2025">
+                </div>
+                <div class="input-group">
+                    <label>Mileage</label>
+                    <input type="number" id="mileage" placeholder="45000">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Make</label>
+                <select id="make">
+                    <option value="">Select make...</option>
+                    <option value="toyota">Toyota</option>
+                    <option value="honda">Honda</option>
+                    <option value="ford">Ford</option>
+                    <option value="chevrolet">Chevrolet</option>
+                    <option value="nissan">Nissan</option>
+                    <option value="hyundai">Hyundai</option>
+                    <option value="kia">Kia</option>
+                    <option value="subaru">Subaru</option>
+                    <option value="mazda">Mazda</option>
+                    <option value="volkswagen">Volkswagen</option>
+                    <option value="bmw">BMW</option>
+                    <option value="mercedes">Mercedes-Benz</option>
+                    <option value="audi">Audi</option>
+                    <option value="lexus">Lexus</option>
+                    <option value="jeep">Jeep</option>
+                    <option value="ram">RAM</option>
+                    <option value="gmc">GMC</option>
+                    <option value="dodge">Dodge</option>
+                    <option value="buick">Buick</option>
+                    <option value="cadillac">Cadillac</option>
+                    <option value="chrysler">Chrysler</option>
+                    <option value="acura">Acura</option>
+                    <option value="infiniti">Infiniti</option>
+                    <option value="lincoln">Lincoln</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Model</label>
+                <input type="text" id="model" placeholder="Camry, F-150, Civic...">
+            </div>
+
+            <div class="input-group">
+                <label>Auction Price (what you'd pay)</label>
+                <input type="number" id="auctionPrice" placeholder="$18,500" min="0" step="100">
+            </div>
+
+            <div class="input-group" style="margin-top: 20px;">
+                <button class="btn" onclick="calculate()">Calculate Profit →</button>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results card" id="results">
+            <div class="result-header">
+                <div class="vehicle-name" id="vehicleName">2021 Toyota Camry</div>
+                <button class="reset-btn" onclick="reset()">Start Over</button>
+            </div>
+
+            <div class="profit-display profit-good" id="profitDisplay">
+                <div class="profit-label">Estimated Profit</div>
+                <div class="profit-amount" id="profitAmount">$3,200</div>
+                <div class="verdict" id="verdict">✓ Good flip - bid with confidence</div>
+            </div>
+
+            <div class="breakdown">
+                <div class="breakdown-row">
+                    <div>
+                        <div class="breakdown-label">Retail Value</div>
+                        <div class="breakdown-note">Based on local market</div>
+                    </div>
+                    <div class="breakdown-value" id="retailValue">$24,500</div>
+                </div>
+                <div class="breakdown-row">
+                    <div>
+                        <div class="breakdown-label">Your Auction Cost</div>
+                    </div>
+                    <div class="breakdown-value" id="auctionCost">$18,500</div>
+                </div>
+                <div class="breakdown-row">
+                    <div>
+                        <div class="breakdown-label">Est. Recon</div>
+                        <div class="breakdown-note">Detail, inspection, minor fixes</div>
+                    </div>
+                    <div class="breakdown-value" id="reconCost">$800</div>
+                </div>
+                <div class="breakdown-row">
+                    <div>
+                        <div class="breakdown-label">Auction/Transport Fees</div>
+                    </div>
+                    <div class="breakdown-value" id="fees">$450</div>
+                </div>
+                <div class="breakdown-row">
+                    <div>
+                        <div class="breakdown-label">Margin</div>
+                    </div>
+                    <div class="breakdown-value" id="margin">16.2%</div>
+                </div>
+            </div>
+        </div>
+
+        <p class="disclaimer">
+            Estimates based on market averages. Always run your own numbers.
+            Not financial advice. Built for speed, not precision.
+        </p>
+    </div>
+
+    <script>
+        // Base retail values by make (rough averages, would be replaced by real API)
+        const makeMultipliers = {
+            'toyota': 1.15,
+            'honda': 1.12,
+            'lexus': 1.20,
+            'subaru': 1.10,
+            'mazda': 1.05,
+            'hyundai': 0.95,
+            'kia': 0.93,
+            'ford': 1.00,
+            'chevrolet': 0.98,
+            'gmc': 1.02,
+            'ram': 1.05,
+            'jeep': 1.03,
+            'dodge': 0.92,
+            'nissan': 0.90,
+            'volkswagen': 0.88,
+            'bmw': 0.85,
+            'mercedes': 0.87,
+            'audi': 0.84,
+            'acura': 1.05,
+            'infiniti': 0.88,
+            'buick': 0.90,
+            'cadillac': 0.88,
+            'chrysler': 0.85,
+            'lincoln': 0.90,
+            'volvo': 0.92,
+            'other': 0.95
+        };
+
+        function calculate() {
+            const year = parseInt(document.getElementById('year').value);
+            const mileage = parseInt(document.getElementById('mileage').value);
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+            const auctionPrice = parseInt(document.getElementById('auctionPrice').value);
+
+            // Validation
+            if (!year || !mileage || !make || !model || !auctionPrice) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Calculate age depreciation (rough)
+            const currentYear = 2025;
+            const age = currentYear - year;
+            const ageDepreciation = Math.pow(0.88, Math.min(age, 10)); // 12% per year, cap at 10 years
+
+            // Mileage factor (penalty for high mileage)
+            const avgMilesPerYear = mileage / Math.max(age, 1);
+            let mileageFactor = 1.0;
+            if (avgMilesPerYear > 15000) mileageFactor = 0.95;
+            if (avgMilesPerYear > 20000) mileageFactor = 0.90;
+            if (mileage > 100000) mileageFactor *= 0.92;
+
+            // Make multiplier (brand strength)
+            const makeMultiplier = makeMultipliers[make] || 0.95;
+
+            // Estimate retail value as markup over auction
+            // Typical retail is 20-35% over wholesale depending on vehicle
+            const baseMarkup = 1.28; // 28% average markup
+            const retailMultiplier = baseMarkup * makeMultiplier * mileageFactor;
+            const retailValue = Math.round(auctionPrice * retailMultiplier / 100) * 100;
+
+            // Recon costs (based on age and mileage)
+            let reconBase = 500;
+            if (age > 3) reconBase += 200;
+            if (age > 6) reconBase += 300;
+            if (mileage > 60000) reconBase += 200;
+            if (mileage > 100000) reconBase += 400;
+            const reconCost = Math.round(reconBase / 50) * 50;
+
+            // Auction fees + transport
+            const fees = Math.round(auctionPrice * 0.025) + 300; // 2.5% buyer fee + transport
+
+            // Calculate profit
+            const totalCost = auctionPrice + reconCost + fees;
+            const profit = retailValue - totalCost;
+            const margin = ((profit / retailValue) * 100).toFixed(1);
+
+            // Determine verdict
+            let verdictClass, verdictText;
+            if (profit >= 2500 && margin >= 12) {
+                verdictClass = 'profit-good';
+                verdictText = '✓ Good flip - bid with confidence';
+            } else if (profit >= 1500 && margin >= 8) {
+                verdictClass = 'profit-ok';
+                verdictText = '⚠ Tight margin - know your buyer';
+            } else {
+                verdictClass = 'profit-bad';
+                verdictText = '✗ Skip it - not worth the risk';
+            }
+
+            // Update UI
+            const makeName = make.charAt(0).toUpperCase() + make.slice(1);
+            document.getElementById('vehicleName').textContent = `${year} ${makeName} ${model}`;
+            document.getElementById('profitAmount').textContent = profit >= 0 ? `$${profit.toLocaleString()}` : `-$${Math.abs(profit).toLocaleString()}`;
+            document.getElementById('verdict').textContent = verdictText;
+            document.getElementById('retailValue').textContent = `$${retailValue.toLocaleString()}`;
+            document.getElementById('auctionCost').textContent = `$${auctionPrice.toLocaleString()}`;
+            document.getElementById('reconCost').textContent = `$${reconCost.toLocaleString()}`;
+            document.getElementById('fees').textContent = `$${fees.toLocaleString()}`;
+            document.getElementById('margin').textContent = `${margin}%`;
+
+            const profitDisplay = document.getElementById('profitDisplay');
+            profitDisplay.className = `profit-display ${verdictClass}`;
+
+            // Show results
+            document.getElementById('inputCard').style.display = 'none';
+            document.getElementById('results').classList.add('show');
+        }
+
+        function reset() {
+            document.getElementById('inputCard').style.display = 'block';
+            document.getElementById('results').classList.remove('show');
+            // Clear form
+            document.getElementById('year').value = '';
+            document.getElementById('mileage').value = '';
+            document.getElementById('make').value = '';
+            document.getElementById('model').value = '';
+            document.getElementById('auctionPrice').value = '';
+        }
+
+        // Allow enter key to submit
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && document.getElementById('inputCard').style.display !== 'none') {
+                calculate();
+            }
+        });
+    </script>
+</body>
+</html>
