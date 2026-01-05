@@ -1,7 +1,4 @@
-James Bonaguro  |  Solutions Engineer & Technical Consultant
-
-
-🚀 Live Portfolio
+James Bonaguro 
 
 james-bonaguro.github.io
 
