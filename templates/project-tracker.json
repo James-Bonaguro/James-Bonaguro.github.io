@@ -1,0 +1,40 @@
+{
+  "description": "Project tracker database with status, priority, dates, and ownership",
+  "type": "database",
+  "properties": {
+    "Name": {
+      "title": {}
+    },
+    "Status": {
+      "select": {
+        "options": [
+          { "name": "Not Started", "color": "default" },
+          { "name": "In Progress", "color": "blue" },
+          { "name": "Blocked", "color": "red" },
+          { "name": "Done", "color": "green" }
+        ]
+      }
+    },
+    "Priority": {
+      "select": {
+        "options": [
+          { "name": "Low", "color": "default" },
+          { "name": "Medium", "color": "yellow" },
+          { "name": "High", "color": "orange" },
+          { "name": "Urgent", "color": "red" }
+        ]
+      }
+    },
+    "Due Date": {
+      "date": {}
+    },
+    "Owner": {
+      "people": {}
+    },
+    "Tags": {
+      "multi_select": {
+        "options": []
+      }
+    }
+  }
+}
